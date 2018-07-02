@@ -1,3 +1,5 @@
+Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger and add new industrial devices
+
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi and plot graphs of your energy consumption.
 Its been verified to work with a Raspberry Pi with a Linksprite RS485 shield and reading values from WEBIQ131D / SDM120 and WEBIQ343L / SDM630. By changing the meters.yml file and making a corresponding [model].yml file it should be possible to use other modbus enabled models.

@@ -1,4 +1,4 @@
-Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger and add new industrial devices
+Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger, change to modbus_tk module and add new industrial devices metters
 
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi and plot graphs of your energy consumption.
@@ -15,8 +15,8 @@ Its been verified to work with a Raspberry Pi with a Linksprite RS485 shield and
 #### Software
 
 * Rasbian
-* Python 2.7 and PIP
-* [Minimalmodbus](https://minimalmodbus.readthedocs.io/en/master/)
+* Python 3 and PIP
+* [modbus_tk](https://github.com/ljean/modbus-tk)
 * [InfluxDB](https://docs.influxdata.com/influxdb/v1.3/)
 * [Grafana](http://docs.grafana.org/)
 
@@ -81,7 +81,7 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 #### Install Energy Meter Logger:
 * Download and install from Github
     ```sh
-    $ git clone https://github.com/samuelphy/energy-meter-logger
+    $ git clone https://github.com/GuillermoElectrico/energy-meter-logger
     ```
 * Run setup script (must be executed as root (sudo) if the application needs to be started from rc.local, see below)
     ```sh

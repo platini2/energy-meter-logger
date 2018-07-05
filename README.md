@@ -1,4 +1,4 @@
-Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger, change to modbus_tk module and add new industrial devices metters
+Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger, change to modbus_tk module and add new industrial devices metters.
 
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi and plot graphs of your energy consumption.

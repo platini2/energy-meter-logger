@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from influxdb import InfluxDBClient
 from datetime import datetime, timedelta
@@ -27,7 +27,7 @@ class DataCollector:
         self.meter_map = None
         self.meter_map_last_change = -1
         log.info('Meters:')
-        for meter in sorted(self.get_meters()):
+        for meter in sorted(self.get_meters(), key=lambda x:sorted(x.keys())):
             log.info('\t {} <--> {}'.format( meter['id'], meter['name']))
 
     def get_meters(self):
@@ -54,24 +54,14 @@ class DataCollector:
 
         for meter in meters:
             meter_id_name[meter['id']] = meter['name']
-            if meter['parity'] == 'none':
-                PARITY = 'N'
-            elif meter['parity'] == 'odd':
-                PARITY = 'O'
-            elif meter['parity'] == 'even':
-                PARITY = 'E'
-            else:
-                log.error('No parity specified')
-                raise
 			
-			try:
+            try:
                 master = modbus_rtu.RtuMaster(
-                    serial.Serial(port=PORT, baudrate=meter['baudrate'], bytesize=meter['bytesize'], parity=PARITY, stopbits=meter['stopbits'], xonxoff=0)
+                    serial.Serial(port=PORT, baudrate=meter['baudrate'], bytesize=meter['bytesize'], parity=meter['parity'], stopbits=meter['stopbits'], xonxoff=0)
                 )
+					
                 master.set_timeout(meter['timeout'])
                 master.set_verbose(True)
-
-                instrument.address = meter['id']    # this is the slave address number
 
                 log.debug('Reading meter %s.' % (meter['id']))
                 start_time = time.time()

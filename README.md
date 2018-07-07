@@ -79,14 +79,15 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 [*source](http://docs.grafana.org/installation/debian/)
 
 #### Install Energy Meter Logger:
-* Download and install from Github
+* Download and install from Github and install pip3
     ```sh
     $ git clone https://github.com/GuillermoElectrico/energy-meter-logger
+	$ sudo apt-get install python3-pip
     ```
 * Run setup script (must be executed as root (sudo) if the application needs to be started from rc.local, see below)
     ```sh
     $ cd energy-meter-logger
-    $ sudo python setup.py install
+    $ sudo python3 setup.py install
     ```    
 * Make script file executable
     ```sh

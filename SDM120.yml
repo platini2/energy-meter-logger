@@ -1,30 +1,30 @@
 Voltage Phase 1 :
-- 0		# Adress dec data
-- 2		# Length word
+	- 0		# Adress decimal
+	- 2		# Length word
 Current Phase 1 :
-- 6
-- 2
+	- 6
+	- 2
 Active power Phase 1 :
-- 12
-- 2
+	- 12
+	- 2
 Apparent power Phase 1 :
-- 18
-- 2
+	- 18
+	- 2
 Reactive power Phase 1 :
-- 24
-- 2
+	- 24
+	- 2
 Power factor Phase 1 :
-- 30
-- 2
+	- 30
+	- 2
 Frequency :
-- 70
-- 2
+	- 70
+	- 2
 Import active energy :
-- 72
-- 2
+	- 72
+	- 2
 Export active energy :
-- 74
-- 2
+	- 74
+	- 2
 Total active energy :
-- 86
-- 2
+	- 86
+	- 2

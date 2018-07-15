@@ -1,5 +1,5 @@
 Voltage Phase 1 :
-- 10	# Adress dec
+- 10	# Adress dec data
 - 2		# Length word
 Voltage Phase 2 :
 - 12
@@ -70,9 +70,21 @@ Inductive reactive energy :
 Capacitive reactive energy :
 - 56
 - 2
-Voltage Phase 1 THD : 110
-Voltage Phase 2 THD : 111
-Voltage Phase 3 THD : 112
-Current Phase 1 THD : 113
-Current Phase 2 THD : 114
-Current Phase 3 THD : 115
+Voltage Phase 1 THD :
+- 110
+- 1
+Voltage Phase 2 THD :
+- 111
+- 1
+Voltage Phase 3 THD :
+- 112
+- 1
+Current Phase 1 THD :
+- 113
+- 1
+Current Phase 2 THD :
+- 114
+- 1
+Current Phase 3 THD :
+- 115
+- 1

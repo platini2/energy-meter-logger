@@ -1,0 +1,78 @@
+Voltage Phase 1 :
+- 10	# Adress dec
+- 2		# Length word
+Voltage Phase 2 :
+- 12
+- 2
+Voltage Phase 3 :
+- 14
+- 2
+Voltage Phase 1-2 :
+- 16
+- 2
+Voltage Phase 2-3 :
+- 18
+- 2
+Voltage Phase 3-1 :
+- 20
+- 2
+Current Phase 1 :
+- 22
+- 2
+Current Phase 2 :
+- 24
+- 2
+Current Phase 3 :
+- 26
+- 2
+Active power Phase 1 :
+- 28
+- 2
+Active power Phase 2 :
+- 30
+- 2
+Active power Phase 3 :
+- 32
+- 2
+Total Active power :
+- 34
+- 2
+Reactive power Phase 1 :
+- 36
+- 2
+Reactive power Phase 2 :
+- 38
+- 2
+Reactive power Phase 3 :
+- 40
+- 2
+Total Reactive power :
+- 42
+- 2
+Total Apparent power :
+- 44
+- 2
+Power factor :
+- 46
+- 2
+Frequency :
+- 48
+- 2
+Import active energy :
+- 50
+- 2
+Export active energy :
+- 52
+- 2
+Inductive reactive energy :
+- 54
+- 2
+Capacitive reactive energy :
+- 56
+- 2
+Voltage Phase 1 THD : 110
+Voltage Phase 2 THD : 111
+Voltage Phase 3 THD : 112
+Current Phase 1 THD : 113
+Current Phase 2 THD : 114
+Current Phase 3 THD : 115

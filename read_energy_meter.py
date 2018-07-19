@@ -1,14 +1,19 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from influxdb import InfluxDBClient
 from datetime import datetime, timedelta
 from os import path
 import sys
 import os
-import minimalmodbus
+import serial
+import re
 import time
 import yaml
 import logging
+import minimalmodbus
+
+#PORT = 1
+PORT = '/dev/ttyUSB0'
 
 # Change working dir to the same dir as this script
 os.chdir(sys.path[0])
@@ -21,7 +26,7 @@ class DataCollector:
         self.meter_map = None
         self.meter_map_last_change = -1
         log.info('Meters:')
-        for meter in sorted(self.get_meters()):
+        for meter in sorted(self.get_meters(), key=lambda x:sorted(x.keys())):
             log.info('\t {} <--> {}'.format( meter['id'], meter['name']))
 
     def get_meters(self):
@@ -43,14 +48,16 @@ class DataCollector:
         t_utc = datetime.utcnow()
         t_str = t_utc.isoformat() + 'Z'
 
-        instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1) # port name, slave address (in decimal)
+        instrument = minimalmodbus.Instrument('/dev/ttyUSB0', 1) # port name, slave address (in decimal)
         instrument.mode = minimalmodbus.MODE_RTU   # rtu or ascii mode
         datas = dict()
         meter_id_name = dict() # mapping id to name
 
         for meter in meters:
             meter_id_name[meter['id']] = meter['name']
+
             instrument.serial.baudrate = meter['baudrate']
+            instrument.serial.bytesize = meter['bytesize']
             instrument.serial.bytesize = meter['bytesize']
             if meter['parity'] == 'none':
                 instrument.serial.parity = minimalmodbus.serial.PARITY_NONE
@@ -77,7 +84,12 @@ class DataCollector:
                 while retries > 0:
                     try:
                         retries -= 1
-                        datas[meter['id']][parameter] = instrument.read_float(parameters[parameter], 4, 2)
+                        if parameters[parameter][2] == 1:
+                            datas[meter['id']][parameter] = instrument.read_float(parameters[parameter][0], meter['function'], parameters[parameter][1])
+                        elif parameters[parameter][2] == 2:
+                            datas[meter['id']][parameter] = instrument.read_long(parameters[parameter][0], meter['function'], parameters[parameter][1])
+                        elif parameters[parameter][2] == 3:
+                            datas[meter['id']][parameter] = instrument.read_register(parameters[parameter][0], meter['function'], parameters[parameter][1])
                         retries = 0
                         pass
                     except ValueError as ve:
@@ -102,7 +114,8 @@ class DataCollector:
                         log.error("Unexpected error:", sys.exc_info()[0])
                         raise
 
-            datas[meter['id']]['Read time'] =  time.time() - start_time
+            datas[meter['id']]['ReadTime'] =  time.time() - start_time
+
 
         json_body = [
             {

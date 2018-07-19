@@ -1,0 +1,120 @@
+Voltage Phase 1 :
+ - 9 # Adress data
+ - 2 # Length word
+ - 1 # Data Type. 1=Float, 2=Long, 3=Integer
+Voltage Phase 2 :
+ - 11
+ - 2
+ - 1
+Voltage Phase 3 :
+ - 13
+ - 2
+ - 1
+Voltage Phase 1-2 :
+ - 65
+ - 2
+ - 1
+Voltage Phase 2-3 :
+ - 67
+ - 2
+ - 1
+Voltage Phase 3-1 :
+ - 69
+ - 2
+ - 1
+Current Phase 1 :
+ - 15
+ - 2
+ - 1
+Current Phase 2 :
+ - 17
+ - 2
+ - 1
+Current Phase 3 :
+ - 19
+ - 2
+ - 1
+Active power Phase 1 :
+ - 39
+ - 2
+ - 1
+Active power Phase 2 :
+ - 41
+ - 2
+ - 1
+Active power Phase 3 :
+ - 43
+ - 2
+ - 1
+Total Active power :
+ - 23
+ - 2
+ - 1
+Reactive power Phase 1 :
+ - 45
+ - 2
+ - 1
+Reactive power Phase 2 :
+ - 47
+ - 2
+ - 1
+Reactive power Phase 3 :
+ - 49
+ - 2
+ - 1
+Total Reactive power :
+ - 25
+ - 2
+ - 1
+Apparent power Phase 1 :
+ - 51
+ - 2
+ - 1
+Apparent power Phase 2 :
+ - 53
+ - 2
+ - 1
+Apparent power Phase 3 :
+ - 55
+ - 2
+ - 1
+Total Apparent power :
+ - 57
+ - 2
+ - 1
+Power factor Phase 1 :
+ - 59
+ - 2
+ - 1
+Power factor Phase 2 :
+ - 61
+ - 2
+ - 1
+Power factor Phase 3 :
+ - 63
+ - 2
+ - 1
+Total Power factor :
+ - 27
+ - 2
+ - 1
+Frequency :
+ - 29
+ - 2
+ - 1
+Import active energy :
+ - 31
+ - 2
+ - 1
+Export active energy :
+ - 33
+ - 2
+ - 1
+Inductive reactive energy :
+ - 35
+ - 2
+ - 1
+Capacitive reactive energy :
+ - 37
+ - 2
+ - 1

@@ -1,21 +1,21 @@
-Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger and add new industrial devices
+Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger and add new industrial metters
 
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi and plot graphs of your energy consumption.
-Its been verified to work with a Raspberry Pi with a Linksprite RS485 shield and reading values from WEBIQ131D / SDM120 and WEBIQ343L / SDM630. By changing the meters.yml file and making a corresponding [model].yml file it should be possible to use other modbus enabled models.
+Its been verified to work with a Raspberry Pi with a Linksprite RS485 shield and Orange Pi Zero with a USB RS485 and reading values from WEBIQ131D / SDM120, WEBIQ343L / SDM630, YG194E-9SY and YG889E-9SY. By changing the meters.yml file and making a corresponding [model].yml file it should be possible to use other modbus enabled models.
 
 ### Requirements
 
 #### Hardware
 
-* Raspberry Pi 3
-* [Linksprite RS485 Shield V3 for RPi](http://linksprite.com/wiki/index.php5?title=RS485/GPIO_Shield_for_Raspberry_Pi_V3.0)
-* Modbus based Energy Meter, e.g WEBIQ 131D / Eastron SDM120 or WEBIQ 343L / Eastron SMD630
+* Raspberry Pi 3 or Orange Pi Zero
+* [Linksprite RS485 Shield V3 for RPi](http://linksprite.com/wiki/index.php5?title=RS485/GPIO_Shield_for_Raspberry_Pi_V3.0) or a simpe, USB RS485 adapter https://es.aliexpress.com/item/HOT-SALE-2pcs-lot-USB-to-RS485-485-Converter-Adapter-Support-Win7-XP-Vista-Linux-Mac/1699271296.html
+* Modbus based Energy Meter, e.g WEBIQ 131D / Eastron SDM120 or WEBIQ 343L / Eastron SMD630 or Industrial metter YG194E-9SY or YG889E-9SY.
 
 #### Software
 
-* Rasbian
-* Python 2.7 and PIP
+* Rasbian or armbian
+* Python 3.4 and PIP
 * [Minimalmodbus](https://minimalmodbus.readthedocs.io/en/master/)
 * [InfluxDB](https://docs.influxdata.com/influxdb/v1.3/)
 * [Grafana](http://docs.grafana.org/)
@@ -81,12 +81,13 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 #### Install Energy Meter Logger:
 * Download and install from Github
     ```sh
-    $ git clone https://github.com/samuelphy/energy-meter-logger
+    $ git clone https://github.com/GuillermoElectrico/energy-meter-logger
+	$ sudo apt-get install python3-pip
     ```
 * Run setup script (must be executed as root (sudo) if the application needs to be started from rc.local, see below)
     ```sh
     $ cd energy-meter-logger
-    $ sudo python setup.py install
+    $ sudo python3 setup.py install
     ```    
 * Make script file executable
     ```sh

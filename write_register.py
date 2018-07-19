@@ -1,7 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import minimalmodbus
 
 instrument = minimalmodbus.Instrument('/dev/ttyAMA0', 1) # port name, slave address (in decimal)
+#instrument = minimalmodbus.Instrument('/dev/ttyUSB0', 1) # port name, slave address (in decimal)
 #instrument = minimalmodbus.Instrument('/dev/serial0', 1) # port name, slave address (in decimal)
 instrument.debug = True
 

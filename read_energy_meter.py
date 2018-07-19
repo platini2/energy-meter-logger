@@ -6,7 +6,6 @@ from os import path
 import sys
 import os
 import serial
-import re
 import time
 import yaml
 import logging

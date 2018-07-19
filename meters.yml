@@ -23,3 +23,11 @@ meters:
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout : 0.5   # seconds
+    - name : Meter Group 4
+      type : YG889E-9SY.yml
+      id : 10     # this is the slave address number
+      baudrate : 9600   # Baud
+      bytesize : 8
+      parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
+      stopbits : 1
+      timeout : 0.5   # seconds

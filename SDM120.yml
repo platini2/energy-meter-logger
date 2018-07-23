@@ -1,30 +1,40 @@
 Voltage Phase 1 :
- - 0		# Adress decimal
- - 2		# Length word
+ - 0 # Adress decimal
+ - 2 # Length word
+ - 1 # Data Type. 1=Float, 2=Long, 3=Integer
 Current Phase 1 :
  - 6
  - 2
+ - 1
 Active power Phase 1 :
  - 12
  - 2
+ - 1
 Apparent power Phase 1 :
  - 18
  - 2
+ - 1
 Reactive power Phase 1 :
  - 24
  - 2
+ - 1
 Power factor Phase 1 :
  - 30
  - 2
+ - 1
 Frequency :
  - 70
  - 2
+ - 1
 Import active energy :
  - 72
  - 2
+ - 1
 Export active energy :
  - 74
  - 2
+ - 1
 Total active energy :
  - 86
  - 2
+ - 1

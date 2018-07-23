@@ -1,69 +1,92 @@
 Voltage Phase 1 :
- - 0		# Adress dec data
- - 2		# Length word
+ - 0 # Adress dec data
+ - 2 # Length word
+ - 1 # Data Type. 1=Float, 2=Long, 3=Integer
 Voltage Phase 2 :
  - 2
  - 2
+ - 1
 Voltage Phase 3 :
  - 4
  - 2
+ - 1
 Current Phase 1 :
  - 6
  - 2
+ - 1
 Current Phase 2 :
  - 8
  - 2
+ - 1
 Current Phase 3 :
  - 10
  - 2
+ - 1
 Active power Phase 1 :
  - 12
  - 2
+ - 1
 Active power Phase 2 :
  - 14
  - 2
+ - 1
 Active power Phase 3 :
  - 16
  - 2
+ - 1
 Apparent power Phase 1 :
  - 18
  - 2
+ - 1
 Apparent power Phase 2 :
  - 20
  - 2
+ - 1
 Apparent power Phase 3 :
  - 22
  - 2
+ - 1
 Reactive power Phase 1 :
  - 24
  - 2
+ - 1
 Reactive power Phase 2 :
  - 26
  - 2
+ - 1
 Reactive power Phase 3 :
  - 28
  - 2
+ - 1
 Power factor Phase 1 :
  - 30
  - 2
+ - 1
 Power factor Phase 2 :
  - 32
  - 2
+ - 1
 Power factor Phase 3 :
  - 34
  - 2
+ - 1
 Sum of line currents :
  - 48
  - 2
+ - 1
 Frequency :
  - 70
  - 2
+ - 1
 Import active energy :
  - 72
  - 2
+ - 1
 Export active energy :
  - 74
  - 2
+ - 1
 Total active energy :
  - 86
  - 2
+ - 1

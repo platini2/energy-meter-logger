@@ -78,8 +78,10 @@ class DataCollector:
                             if parameters[parameter][2] == 1:
                                 resultado = master.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>f')
                             elif parameters[parameter][2] == 2:
-                                resultado = master.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>i')
+                                resultado = master.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>l')
                             elif parameters[parameter][2] == 3:
+                                resultado = master.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>i')
+                            elif parameters[parameter][2] == 4:
                                 resultado = master.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>B')
                             datas[meter['id']][parameter] = resultado[0]
                             retries = 0

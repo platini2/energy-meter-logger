@@ -4,7 +4,7 @@ meters:
       id : 1     # this is the slave address number
       baudrate : 9600   # Baud
       bytesize : 8
-      parity : even # none | odd | even
+      parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 0.5   # seconds
       function : 4    # 3 = Read Input register or 4 = Read Holding register
@@ -13,7 +13,7 @@ meters:
       id : 13     # this is the slave address number
       baudrate : 9600   # Baud
       bytesize : 8
-      parity : none # none | odd | even
+      parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 0.5   # seconds
       function : 4    # 3 = Read Input register or 4 = Read Holding register
@@ -22,7 +22,7 @@ meters:
       id : 10     # this is the slave address number
       baudrate : 9600   # Baud
       bytesize : 8
-      parity : none # none | odd | even
+      parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout : 0.5   # seconds
       function : 3    # 3 = Read Input register or 4 = Read Holding register
@@ -31,7 +31,7 @@ meters:
       id : 10     # this is the slave address number
       baudrate : 9600   # Baud
       bytesize : 8
-      parity : none # none | odd | even
+      parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout : 0.5   # seconds
       function : 3    # 3 = Read Input register or 4 = Read Holding register

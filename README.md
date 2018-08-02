@@ -78,6 +78,19 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 * Go to http://localhost:3000 and login using admin / admin (remember to change password)
 [*source](http://docs.grafana.org/installation/debian/)
 
+* Connect to the InfluxDB database 
+I followed the Instructions at http://docs.grafana.org/datasources/influxdb/
+Click on the Grafana icon
+Select “Data Sources”
+Click on “+ Add data source” 
+Name: demo data
+Type: InfluxDB
+URL: http://localhost:8086
+Database: mydb
+User: root
+Password: root
+Click on “Save and Test”
+
 #### Install Energy Meter Logger:
 * Download and install from Github
     ```sh

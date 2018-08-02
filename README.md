@@ -79,6 +79,7 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 [*source](http://docs.grafana.org/installation/debian/)
 
 * Connect to the InfluxDB database 
+	
 	I followed the Instructions at http://docs.grafana.org/datasources/influxdb/
 		Click on the Grafana icon
 		Select “Data Sources”

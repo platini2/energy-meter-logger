@@ -28,7 +28,7 @@ setup(name='energy_meter_logger',
         'Programming Language :: Python :: 3.5'
       ],
       keywords='Energy Meter RS485 Modbus',
-      install_requires=[]+(['setuptools','ez_setup','pyserial','minimalmodbus', 'influxdb', 'pyyaml'] if "linux" in sys.platform else []),
+      install_requires=[]+(['setuptools','ez_setup','pyserial','modbus_tk', 'influxdb', 'pyyaml'] if "linux" in sys.platform else []),
       license='MIT',
       packages=[],
       include_package_data=True,

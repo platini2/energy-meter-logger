@@ -4,7 +4,7 @@ meters:
       id : 1     # this is the slave address number
       baudrate : 2400   # Baud
       bytesize : 8
-      parity : even # none | odd | even
+      parity : none # none | odd | even
       stopbits : 1
       timeout  : 0.5   # seconds
       function : 4    # 3 = Read Holding register or 4 = Read Input register 

@@ -24,7 +24,7 @@ setup(name='energy_meter_logger',
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: MIT License',
-        'Operating System :: Raspbian',
+        'Operating System :: Raspbian-armbian',
         'Programming Language :: Python :: 3.5'
       ],
       keywords='Energy Meter RS485 Modbus',

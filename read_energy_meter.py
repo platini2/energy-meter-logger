@@ -114,7 +114,7 @@ class DataCollector:
                             log.error("Unexpected error:", sys.exc_info()[0])
                             raise
 
-                datas[meter['id']]['Read time'] =  time.time() - start_time
+                datas[meter['id']]['ReadTime'] =  time.time() - start_time
 			
             except modbus_tk.modbus.ModbusError as exc:
                 log.error("%s- Code=%d", exc, exc.get_exception_code())

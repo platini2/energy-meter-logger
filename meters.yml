@@ -7,7 +7,7 @@ meters:
       parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 0.5   # seconds
-      function : 4    # 3 = Read Input register or 4 = Read Holding register
+      function : 4    # 3 = Read Holding register or 4 = Read Input register 
     - name : Meter Group 2
       type : SDM630.yml
       id : 13     # this is the slave address number
@@ -16,7 +16,7 @@ meters:
       parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 0.5   # seconds
-      function : 4    # 3 = Read Input register or 4 = Read Holding register
+      function : 4    # 3 = Read Holding register or 4 = Read Input register 
     - name : Meter Group 3
       type : YG194E-9SY.yml
       id : 10     # this is the slave address number
@@ -25,7 +25,7 @@ meters:
       parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout : 0.5   # seconds
-      function : 3    # 3 = Read Input register or 4 = Read Holding register
+      function : 3    # 3 = Read Holding register or 4 = Read Input register 
     - name : Meter Group 4
       type : YG889E-9SY.yml
       id : 10     # this is the slave address number
@@ -34,4 +34,4 @@ meters:
       parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout : 0.5   # seconds
-      function : 3    # 3 = Read Input register or 4 = Read Holding register
+      function : 3    # 3 = Read Holding register or 4 = Read Input register 

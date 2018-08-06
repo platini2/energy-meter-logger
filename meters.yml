@@ -2,7 +2,7 @@ meters:
     - name : Meter Group 1
       type : SDM120.yml
       id : 1     # this is the slave address number
-      baudrate : 9600   # Baud
+      baudrate : 2400   # Baud
       bytesize : 8
       parity : 'E' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1

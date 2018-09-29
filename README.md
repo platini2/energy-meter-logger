@@ -1,4 +1,5 @@
 Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger, change to modbus_tk module and add new industrial devices metters.
+Add support for ModbusTCP and add bridge RTU to TCP vía ESP8266
 
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi/Orange Pi and plot graphs of your energy consumption.

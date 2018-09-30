@@ -1,4 +1,4 @@
-ModbusMaster485	KEYWORD1
+ModbusMaster232	KEYWORD1
 node	KEYWORD3
 
 

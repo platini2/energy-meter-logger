@@ -1,3 +1,7 @@
+/**
+@file
+Arduino library for communicating with Modbus slaves over RS232/485 (via RTU protocol).
+*/
 /*
 
   ModbusMaster.cpp - Arduino library for communicating with Modbus slaves
@@ -21,18 +25,16 @@
   Written by Doc Walker (Rx)
   Copyright © 2009-2013 Doc Walker <4-20ma at wvfans dot net>
   
-  Modificado para esp8266
+    Modificado para esp8266
   - Function crc16
   - Function makeWord
+  - Function half duplex RS485_ENABLE_PIN 
   
 */
-#include "ModbusMaster485.h"
+#include "ModbusMaster232.h"
+
+
 #include "Arduino.h"
-
-
-
-/* _____PROJECT INCLUDES_____________________________________________________ */
-
 
 
 /* _____PUBLIC FUNCTIONS_____________________________________________________ */
@@ -42,12 +44,10 @@ Constructor.
 Creates class object using default serial port 0, Modbus slave ID 1.
 @ingroup setup
 */
-ModbusMaster485::ModbusMaster485(void)
+ModbusMaster232::ModbusMaster232(void)
 {
   _u8SerialPort = 0;
   _u8MBSlave = 1;
-   myDevice = RS485();
-
 }
 
 
@@ -60,39 +60,32 @@ Creates class object using default serial port 0, specified Modbus slave ID.
 @param u8MBSlave Modbus slave ID (1..255)
 @ingroup setup
 */
-ModbusMaster485::ModbusMaster485(uint8_t u8MBSlave)
+ModbusMaster232::ModbusMaster232(uint8_t u8MBSlave)
 {
   _u8SerialPort = 0;
   _u8MBSlave = u8MBSlave;
-   myDevice = RS485();
-
 }
 
 
 /**
 Constructor.
 
-Creates class object using specified serial port, Modbus slave ID.
+Creates class object using default serial port 0, specified Modbus slave ID, and specified pin enabled RS485 adapter and enabled function.
 
-@overload void ModbusMaster::ModbusMaster(uint8_t u8SerialPort, uint8_t u8MBSlave)
+@overload void ModbusMaster::ModbusMaster((uint8_t u8MBSlave, uint8_t u8PinEnableTx)
 @param u8MBSlave Modbus slave ID (1..255)
+@param u8PinEnableTx gpio pin to half duplex rs485
 @ingroup setup
 */
-ModbusMaster485::ModbusMaster485(uint8_t u8SerialPort, uint8_t u8MBSlave)
+ModbusMaster232::ModbusMaster232(uint8_t u8MBSlave, uint8_t u8PinEnableTx)
 {
-	myDevice.begin();
-	_u8MBSlave = u8MBSlave;
+  _u8SerialPort = 0;
+  _u8MBSlave = u8MBSlave;
+  _u8PinEnableTx = u8PinEnableTx;
+  _PinEnableTx = true;
+
 }
 
-/**
-CRC ESP8266
-
-Creates class object using default serial port 0, specified Modbus slave ID.
-
-@overload void ModbusMaster::ModbusMaster(uint8_t u8MBSlave)
-@param u8MBSlave Modbus slave ID (1..255)
-@ingroup setup
-*/
 
 //Function  crc16 created for ESP8266   - PDAControl
 //http://www.atmel.com/webdoc/AVRLibcReferenceManual/group__util__crc_1ga95371c87f25b0a2497d9cba13190847f.html
@@ -124,12 +117,14 @@ Call once class has been instantiated, typically within setup().
 
 @ingroup setup
 */
-void ModbusMaster485::begin(void)
+void ModbusMaster232::begin(void)
 {
-	myDevice.begin();
-	myDevice.parityBit(DISABLE);
-	myDevice.stopBitConfig(2);
-	myDevice.baudRateConfig(9600);
+	Serial.begin(9600);
+	
+	if (_PinEnableTx){
+		pinMode(_u8PinEnableTx, OUTPUT);       //Enable rs485 
+		digitalWrite(_u8PinEnableTx, LOW);     
+	}
 }
 
 
@@ -143,18 +138,23 @@ Call once class has been instantiated, typically within setup().
 @param u16BaudRate baud rate, in standard increments (300..115200)
 @ingroup setup
 */
-void ModbusMaster485::begin(unsigned long BaudRate)
+void ModbusMaster232::begin(unsigned long BaudRate )
 {
 //  txBuffer = (uint16_t*) calloc(ku8MaxBufferSize, sizeof(uint16_t));
 	_u8TransmitBufferIndex = 0;
 	u16TransmitBufferLength = 0;
-	myDevice.begin();
-	delay(100);    
-	myDevice.baudRateConfig(BaudRate);
+
+	delay(100); 
+	Serial.begin(BaudRate);
+	
+	if (_PinEnableTx){
+		pinMode(_u8PinEnableTx, OUTPUT);       //Enable rs485 
+		digitalWrite(_u8PinEnableTx, LOW);     
+	}
 }
 
 
-void ModbusMaster485::beginTransmission(uint16_t u16Address)
+void ModbusMaster232::beginTransmission(uint16_t u16Address)
 {
   _u16WriteAddress = u16Address;
   _u8TransmitBufferIndex = 0;
@@ -162,7 +162,7 @@ void ModbusMaster485::beginTransmission(uint16_t u16Address)
 }
 
 // eliminate this function in favor of using existing MB request functions
-uint8_t ModbusMaster485::requestFrom(uint16_t address, uint16_t quantity)
+uint8_t ModbusMaster232::requestFrom(uint16_t address, uint16_t quantity)
 {
   uint8_t read;
   // clamp to buffer length
@@ -178,7 +178,7 @@ uint8_t ModbusMaster485::requestFrom(uint16_t address, uint16_t quantity)
 }
 
 
-void ModbusMaster485::sendBit(bool data)
+void ModbusMaster232::sendBit(bool data)
 {
   uint8_t txBitIndex = u16TransmitBufferLength % 16;
   if ((u16TransmitBufferLength >> 4) < ku8MaxBufferSize)
@@ -194,7 +194,7 @@ void ModbusMaster485::sendBit(bool data)
 }
 
 
-void ModbusMaster485::send(uint16_t data)
+void ModbusMaster232::send(uint16_t data)
 {
   if (_u8TransmitBufferIndex < ku8MaxBufferSize)
   {
@@ -204,27 +204,27 @@ void ModbusMaster485::send(uint16_t data)
 }
 
 
-void ModbusMaster485::send(uint32_t data)
+void ModbusMaster232::send(uint32_t data)
 {
   send(lowWord(data));
   send(highWord(data));
 }
 
 
-void ModbusMaster485::send(uint8_t data)
+void ModbusMaster232::send(uint8_t data)
 {
   send(uint16_t(data));
 }
 
 
 
-uint8_t ModbusMaster485::available(void)
+uint8_t ModbusMaster232::available(void)
 {
   return _u8ResponseBufferLength - _u8ResponseBufferIndex;
 }
 
 
-uint16_t ModbusMaster485::receive(void)
+uint16_t ModbusMaster232::receive(void)
 {
   if (_u8ResponseBufferIndex < _u8ResponseBufferLength)
   {
@@ -249,7 +249,7 @@ serial ports, etc. is permitted within callback function.
 
 @see ModbusMaster::ModbusMasterTransaction()
 */
-void ModbusMaster485::idle(void (*idle)())
+void ModbusMaster232::idle(void (*idle)())
 {
   _idle = idle;
 }
@@ -263,7 +263,7 @@ Retrieve data from response buffer.
 @return value in position u8Index of response buffer (0x0000..0xFFFF)
 @ingroup buffer
 */
-uint16_t ModbusMaster485::getResponseBuffer(uint8_t u8Index)
+uint16_t ModbusMaster232::getResponseBuffer(uint8_t u8Index)
 {
   if (u8Index < ku8MaxBufferSize)
   {
@@ -282,7 +282,7 @@ Clear Modbus response buffer.
 @see ModbusMaster::getResponseBuffer(uint8_t u8Index)
 @ingroup buffer
 */
-void ModbusMaster485::clearResponseBuffer()
+void ModbusMaster232::clearResponseBuffer()
 {
   uint8_t i;
   
@@ -302,7 +302,7 @@ Place data in transmit buffer.
 @return 0 on success; exception number on failure
 @ingroup buffer
 */
-uint8_t ModbusMaster485::setTransmitBuffer(uint8_t u8Index, uint16_t u16Value)
+uint8_t ModbusMaster232::setTransmitBuffer(uint8_t u8Index, uint16_t u16Value)
 {
   if (u8Index < ku8MaxBufferSize)
   {
@@ -322,7 +322,7 @@ Clear Modbus transmit buffer.
 @see ModbusMaster::setTransmitBuffer(uint8_t u8Index, uint16_t u16Value)
 @ingroup buffer
 */
-void ModbusMaster485::clearTransmitBuffer()
+void ModbusMaster232::clearTransmitBuffer()
 {
   uint8_t i;
   
@@ -356,7 +356,7 @@ order end of the word).
 @return 0 on success; exception number on failure
 @ingroup discrete
 */
-uint8_t ModbusMaster485::readCoils(uint16_t u16ReadAddress, uint16_t u16BitQty)
+uint8_t ModbusMaster232::readCoils(uint16_t u16ReadAddress, uint16_t u16BitQty)
 {
   _u16ReadAddress = u16ReadAddress;
   _u16ReadQty = u16BitQty;
@@ -387,7 +387,7 @@ order end of the word).
 @return 0 on success; exception number on failure
 @ingroup discrete
 */
-uint8_t ModbusMaster485::readDiscreteInputs(uint16_t u16ReadAddress,
+uint8_t ModbusMaster232::readDiscreteInputs(uint16_t u16ReadAddress,
   uint16_t u16BitQty)
 {
   _u16ReadAddress = u16ReadAddress;
@@ -412,7 +412,7 @@ register.
 @return 0 on success; exception number on failure
 @ingroup register
 */
-uint8_t ModbusMaster485::readHoldingRegisters(uint16_t u16ReadAddress,
+uint8_t ModbusMaster232::readHoldingRegisters(uint16_t u16ReadAddress,
   uint16_t u16ReadQty)
 {
   _u16ReadAddress = u16ReadAddress;
@@ -437,7 +437,7 @@ register.
 @return 0 on success; exception number on failure
 @ingroup register
 */
-uint8_t ModbusMaster485::readInputRegisters(uint16_t u16ReadAddress,
+uint8_t ModbusMaster232::readInputRegisters(uint16_t u16ReadAddress,
   uint8_t u16ReadQty)
 {
   _u16ReadAddress = u16ReadAddress;
@@ -460,7 +460,7 @@ address of the coil to be forced. Coils are addressed starting at zero.
 @return 0 on success; exception number on failure
 @ingroup discrete
 */
-uint8_t ModbusMaster485::writeSingleCoil(uint16_t u16WriteAddress, uint8_t u8State)
+uint8_t ModbusMaster232::writeSingleCoil(uint16_t u16WriteAddress, uint8_t u8State)
 {
   _u16WriteAddress = u16WriteAddress;
   _u16WriteQty = (u8State ? 0xFF00 : 0x0000);
@@ -480,7 +480,7 @@ written. Registers are addressed starting at zero.
 @return 0 on success; exception number on failure
 @ingroup register
 */
-uint8_t ModbusMaster485::writeSingleRegister(uint16_t u16WriteAddress,
+uint8_t ModbusMaster232::writeSingleRegister(uint16_t u16WriteAddress,
   uint16_t u16WriteValue)
 {
   _u16WriteAddress = u16WriteAddress;
@@ -506,14 +506,14 @@ corresponding output to be ON. A logical '0' requests it to be OFF.
 @return 0 on success; exception number on failure
 @ingroup discrete
 */
-uint8_t ModbusMaster485::writeMultipleCoils(uint16_t u16WriteAddress,
+uint8_t ModbusMaster232::writeMultipleCoils(uint16_t u16WriteAddress,
   uint16_t u16BitQty)
 {
   _u16WriteAddress = u16WriteAddress;
   _u16WriteQty = u16BitQty;
   return ModbusMasterTransaction(ku8MBWriteMultipleCoils);
 }
-uint8_t ModbusMaster485::writeMultipleCoils()
+uint8_t ModbusMaster232::writeMultipleCoils()
 {
   _u16WriteQty = u16TransmitBufferLength;
   return ModbusMasterTransaction(ku8MBWriteMultipleCoils);
@@ -534,7 +534,7 @@ is packed as one word per register.
 @return 0 on success; exception number on failure
 @ingroup register
 */
-uint8_t ModbusMaster485::writeMultipleRegisters(uint16_t u16WriteAddress,
+uint8_t ModbusMaster232::writeMultipleRegisters(uint16_t u16WriteAddress,
   uint16_t u16WriteQty)
 {
   _u16WriteAddress = u16WriteAddress;
@@ -543,7 +543,7 @@ uint8_t ModbusMaster485::writeMultipleRegisters(uint16_t u16WriteAddress,
 }
 
 // new version based on Wire.h
-uint8_t ModbusMaster485::writeMultipleRegisters()
+uint8_t ModbusMaster232::writeMultipleRegisters()
 {
   _u16WriteQty = _u8TransmitBufferIndex;
   return ModbusMasterTransaction(ku8MBWriteMultipleRegisters);
@@ -572,7 +572,7 @@ Result = (Current Contents && And_Mask) || (Or_Mask && (~And_Mask))
 @return 0 on success; exception number on failure
 @ingroup register
 */
-uint8_t ModbusMaster485::maskWriteRegister(uint16_t u16WriteAddress,
+uint8_t ModbusMaster232::maskWriteRegister(uint16_t u16WriteAddress,
   uint16_t u16AndMask, uint16_t u16OrMask)
 {
   _u16WriteAddress = u16WriteAddress;
@@ -602,7 +602,7 @@ buffer.
 @return 0 on success; exception number on failure
 @ingroup register
 */
-uint8_t ModbusMaster485::readWriteMultipleRegisters(uint16_t u16ReadAddress,
+uint8_t ModbusMaster232::readWriteMultipleRegisters(uint16_t u16ReadAddress,
   uint16_t u16ReadQty, uint16_t u16WriteAddress, uint16_t u16WriteQty)
 {
   _u16ReadAddress = u16ReadAddress;
@@ -611,7 +611,7 @@ uint8_t ModbusMaster485::readWriteMultipleRegisters(uint16_t u16ReadAddress,
   _u16WriteQty = u16WriteQty;
   return ModbusMasterTransaction(ku8MBReadWriteMultipleRegisters);
 }
-uint8_t ModbusMaster485::readWriteMultipleRegisters(uint16_t u16ReadAddress,
+uint8_t ModbusMaster232::readWriteMultipleRegisters(uint16_t u16ReadAddress,
   uint16_t u16ReadQty)
 {
   _u16ReadAddress = u16ReadAddress;
@@ -635,7 +635,7 @@ Sequence:
 @param u8MBFunction Modbus function (0x01..0xFF)
 @return 0 on success; exception number on failure
 */
-uint8_t ModbusMaster485::ModbusMasterTransaction(uint8_t u8MBFunction)
+uint8_t ModbusMaster232::ModbusMasterTransaction(uint8_t u8MBFunction)
 {
   uint8_t u8ModbusADU[256];
   uint8_t u8ModbusADUSize = 0;
@@ -733,33 +733,38 @@ uint8_t ModbusMaster485::ModbusMasterTransaction(uint8_t u8MBFunction)
   u16CRC = 0xFFFF;
   for (i = 0; i < u8ModbusADUSize; i++)
   {
-  //Function  crc16  for ESP8266   - PDAControl
     u16CRC = _crc16_update2(u16CRC, u8ModbusADU[i]);
   }
   u8ModbusADU[u8ModbusADUSize++] = lowByte(u16CRC);
   u8ModbusADU[u8ModbusADUSize++] = highByte(u16CRC);
   u8ModbusADU[u8ModbusADUSize] = 0;
   
-  // transmit request
+  
+  // transmit request on the rs485 interface
+  if (_PinEnableTx){
+  digitalWrite(_u8PinEnableTx, HIGH);     // activate pin
+  delay(1);
+  }
   for (i = 0; i < u8ModbusADUSize; i++)
   {
-		myDevice.send(u8ModbusADU[i], BYTE);
+		Serial.print(char(u8ModbusADU[i]));
   }
 
   delay(2);
   
+  if (_PinEnableTx)
+	digitalWrite(_u8PinEnableTx, LOW);     // deactivate pin
+  
   u8ModbusADUSize = 1;
-  //myDevice.flush();
   
   // loop until we run out of time or bytes, or an error occurs
   u32StartTime = millis();
-	//myDevice.read();
 
 		int val = 0xFF;
 		long cont = 0;
 		
 		while((val != _u8MBSlave) && (cont < 100)) {
-			val = myDevice.read();
+			val = Serial.read();
 			delay(5);
 			cont ++;
 		}
@@ -769,9 +774,9 @@ uint8_t ModbusMaster485::ModbusMasterTransaction(uint8_t u8MBFunction)
   
   while (u8BytesLeft && !u8MBStatus)
   {
-  if  (myDevice.available())
+  if  (Serial.available())
   {    
-		u8ModbusADU[u8ModbusADUSize] = myDevice.read();
+		u8ModbusADU[u8ModbusADUSize] = Serial.read();
 		u8BytesLeft--;
 		u8ModbusADUSize ++;
 		 
@@ -847,7 +852,6 @@ uint8_t ModbusMaster485::ModbusMasterTransaction(uint8_t u8MBFunction)
     u16CRC = 0xFFFF;
     for (i = 0; i < (u8ModbusADUSize - 2); i++)
     {
-	  //Function  crc16  for ESP8266   - PDAControl
       u16CRC = _crc16_update2(u16CRC, u8ModbusADU[i]);
     }
     
@@ -918,20 +922,18 @@ uint8_t ModbusMaster485::ModbusMasterTransaction(uint8_t u8MBFunction)
 
 MakeWord function deleted -for ESP8266 PDAControl
 
-sustituido por return (h << 8) | l;
-
-unsigned int ModbusMaster485::makeWord(unsigned int w)
+unsigned int ModbusMaster232::makeWord(unsigned int w)
 {
 	return w;
 }
 
 
-unsigned int ModbusMaster485::makeWord(uint8_t h, uint8_t l)
+unsigned int ModbusMaster232::makeWord(uint8_t h, uint8_t l)
 {
 	return (h << 8) | l;
 }
 */
-void ModbusMaster485::setSlaveAddress(uint8_t u8MBSlave){
+void ModbusMaster232::setSlaveAddress(uint8_t u8MBSlave){
 
 	_u8MBSlave = u8MBSlave;
 }

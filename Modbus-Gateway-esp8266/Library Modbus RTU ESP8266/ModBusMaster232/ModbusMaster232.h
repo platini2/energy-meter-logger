@@ -35,8 +35,8 @@ Arduino library for communicating with Modbus slaves over RS232/485 (via RTU pro
 
 
   
-#ifndef	_MODBUSMASTER485_H_INCLUDED
-#define	_MODBUSMASTER485_H_INCLUDED
+#ifndef	_MODBUSMASTER232_H_INCLUDED
+#define	_MODBUSMASTER232_H_INCLUDED
 
 
 /**
@@ -56,7 +56,6 @@ Set to 1 to enable debugging features within class:
 	#include <inttypes.h>
 #endif
 
-#include <../RS485/RS485.h>
 
 
 /* _____UTILITY MACROS_______________________________________________________ */
@@ -101,16 +100,16 @@ Macro to generate 32-bit integer from (2) 16-bit words.
 Arduino class library for communicating with Modbus slaves over 
 RS232/485 (via RTU protocol).
 */
-class ModbusMaster485
+class ModbusMaster232
 {
   public:
   
-    ModbusMaster485();
-    ModbusMaster485(uint8_t);
-    ModbusMaster485(uint8_t, uint8_t);
+    ModbusMaster232();
+    ModbusMaster232(uint8_t);
+    ModbusMaster232(uint8_t, uint8_t);
     
     void begin();
-    void begin(unsigned long );
+    void begin(unsigned long);
     void idle(void (*)());
     
     // Modbus exception codes
@@ -259,6 +258,8 @@ class ModbusMaster485
     
   private:
     uint8_t  _u8SerialPort;                                      ///< serial port (0..3) initialized in constructor
+	uint8_t  _u8PinEnableTx;                                     ///< pin enabled for rs485 adaptor initialized in constructor
+	uint8_t  _PinEnableTx = false;								 ///< if pin enabled activate pin initialized in constructor
     uint8_t  _u8MBSlave;                                         ///< Modbus slave (1..255) initialized in constructor
     uint16_t _u16BaudRate;                                       ///< baud rate (300..115200) initialized in begin()
     static const uint8_t ku8MaxBufferSize                = 64;   ///< size of response/transmit buffers    
@@ -300,8 +301,6 @@ class ModbusMaster485
 
     uint16_t makeWord(uint16_t w);
 	uint16_t makeWord(uint8_t h, uint8_t l);
-	RS485 myDevice;
-
 
 };
 #endif

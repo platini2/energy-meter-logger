@@ -1,13 +1,12 @@
-// Include these libraries for using the RS-485 and Modbus functions
-#include <RS485.h>
-#include <ModbusMaster485.h>
-#include <SPI.h>
+// Include these libraries for using the RS-232 to RS-485 adaptor and Modbus functions
+#include <ModbusMaster232.h>
 
 //----------------------------------------------------------------------------------------------------
 
 #define MB_PORT 502
-#define slaveId 1
-#define Baudrate 9600
+#define SLAVEID 1
+#define BAUDRATE 9600      //rate de baud a comunicate RS485
+#define RS485_ENABLE_PIN 0 //pinul GPIO0
 
 //#define MB_ETHERNET
 #define MB_ESP8266
@@ -72,8 +71,8 @@ EthernetServer MBServer(MB_PORT);
 WiFiServer MBServer(MB_PORT);
 #endif
 
-// Instantiate ModbusMaster object as slave ID
-ModbusMaster485 node(slaveId);
+// Instantiate ModbusMaster object as slave ID and set GPIO to RS485_ENABLE_PIN half duplex adaptor.
+ModbusMaster232 node(SLAVEID, RS485_ENABLE_PIN);
 
 byte ByteArray[260];
 bool ledPinStatus = LOW;
@@ -118,10 +117,9 @@ void setup()
 #endif
 
   // Initialize Modbus communication baud rate
-  node.begin(Baudrate);
+  node.begin(BAUDRATE);
 
 }
-
 
 void loop()
 {

@@ -94,7 +94,7 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
     ```sh
     $ chmod 777 read_energy_meter.py
     ```
-* Edit meters.yml to match your configuration
+* Edit meters.yml and influx_config.yml to match your configuration
 * Test the configuration by running:
     ```sh
     ./read_energy_meter.py
@@ -105,7 +105,6 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 	```
 	/usr/bin/env: ‘python3\r’: No such file or directory
 	```
-	
 	Use dos2unix to fix it.
 	```
 	$ sudo apt install dos2unix

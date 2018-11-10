@@ -1,5 +1,5 @@
 Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger, change to modbus_tk module and add new industrial devices metters.
-Add support for ModbusTCP and add bridge RTU to TCP vía ESP8266
+Add support for ModbusTCP and add bridge RTU to TCP vía ESP8266. Added possibility to use more than one InfluxDB server (or database)
 
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi/Orange Pi and plot graphs of your energy consumption.
@@ -9,7 +9,7 @@ Its been verified to work with a Raspberry Pi and Orange Pi Zero with a Linkspri
 
 #### Hardware
 
-* Raspberry Pi 3 / Orange Pi Zero
+* Raspberry Pi 3 / Orange Pi Zero H2
 * [Linksprite RS485 Shield V3 for RPi](http://linksprite.com/wiki/index.php5?title=RS485/GPIO_Shield_for_Raspberry_Pi_V3.0) or a simpe [USB RS485 adapter](https://es.aliexpress.com/item/HOT-SALE-2pcs-lot-USB-to-RS485-485-Converter-Adapter-Support-Win7-XP-Vista-Linux-Mac/1699271296.html)
 * Modbus based Energy Meter, e.g WEBIQ 131D / Eastron SDM120 or WEBIQ 343L / Eastron SMD630 or Industrial metter YG194E-9SY or YG889E-9SY.
 
@@ -100,6 +100,18 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
     ./read_energy_meter.py
     ./read_energy_meter.py --help # Shows you all available parameters
     ```
+	
+	If the error appears:
+	```
+	/usr/bin/env: ‘python3\r’: No such file or directory
+	```
+	
+	Use dos2unix to fix it.
+	```
+	$ sudo apt install dos2unix
+	$ dos2unix /PATH/TO/YOUR/FILE
+	```
+	
 * To run the python script at system startup. Add to following lines to the end of /etc/rc.local but before exit:
     ```sh
     # Start Energy Meter Logger

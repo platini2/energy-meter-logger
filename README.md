@@ -5,6 +5,8 @@ Add support for ModbusTCP and add bridge RTU to TCP vía ESP8266. Added possibil
 Log your Energy Meter data on a Raspberry Pi/Orange Pi and plot graphs of your energy consumption.
 Its been verified to work with a Raspberry Pi and Orange Pi Zero with a Linksprite RS485 shield and USB to RS485 adapter for reading values from WEBIQ131D / SDM120M (SDM120CTM, SDM120CT-MV)  /, WEBIQ343L / SDM630M, YG194E-9SY and YG889E-9SY. By changing the meters.yml file and making a corresponding [model].yml file it should be possible to use other modbus enabled models.
 
+Add support for ModbusTCP and add bridge RTU to TCP vía ESP8266
+
 ### Requirements
 
 #### Hardware

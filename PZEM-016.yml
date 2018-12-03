@@ -1,0 +1,24 @@
+Voltage Phase : # 1LSB -> 0.1V
+ - 0 # Adress decimal
+ - 1 # Length word
+ - 3 # Data Type. 1=Float, 2=Long, 3=Integer
+Current Phase : # 1LSB -> 0.001A
+ - 1
+ - 2
+ - 2
+Active power Phase : # 1LSB -> 0.1W
+ - 3
+ - 2
+ - 2
+Import active energy : # 1LSB -> 1Wh
+ - 5
+ - 2
+ - 2
+Frequency : # 1LSB -> 0.1Hz
+ - 7
+ - 1
+ - 1
+Power factor Phase : # 1LSB -> 0.01
+ - 8
+ - 1
+ - 3

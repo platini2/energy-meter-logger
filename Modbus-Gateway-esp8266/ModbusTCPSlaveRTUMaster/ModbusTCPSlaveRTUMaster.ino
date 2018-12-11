@@ -1,25 +1,35 @@
 // Include these libraries for using the RS-232 to RS-485 adaptor and Modbus functions
 #include <ModbusMaster232.h>
 
-//----------------------------------------------------------------------------------------------------
+//---------------------------------- ONLY CONFIG THIS----------------------------------------------------
 
 #define MB_PORT 502
 #define SLAVEID 1          // id device rs485 connected.
 #define BAUDRATE 9600      //rate de baud a comunicate RS485
-#define RS485_ENABLE_PIN 0 //pinul GPIO0 or gpio2
+#define RS485_ENABLE_PIN 0 //pinul GPIO0 or GPIO2 (GPIO0 use in PCB Git), if use arduino with ethernet shield any unused pin
 
+// Select board (possibility to use ethernet)
 //#define MB_ETHERNET
 #define MB_ESP8266
 
-//#define STATIC_MODE  // static IP address config
+// Update these with values suitable for your network.
+#define STATIC_MODE  // static IP address config (DHCP or static DHCP lease if comment this line)
 #ifdef STATIC_MODE
 byte ip[]      = { 192, 168, 0, 22 };
-byte gateway[] = { 192, 168, 0, 1 };
 byte subnet[]  = { 255, 255, 255, 0 };
+byte gateway[] = { 192, 168, 0, 1 };
 #endif
 
-#define W_SSID "Telecom-28778737"
-#define W_PASSWORD "passwordwificasa47893000"
+#ifdef MB_ESP8266
+// Wifi Settings
+const char* ssid = "..........";
+const char* password = "..........";
+
+// OTA config
+long OtaPort = 8266; // Port defaults to 8266
+const char* OtaHostname = "..........";
+const char* OtaPassword = "..........";
+#endif
 
 //----------------------------------------------------------------------------------------------------
 
@@ -30,6 +40,9 @@ byte subnet[]  = { 255, 255, 255, 0 };
 #ifdef MB_ESP8266
 #define LED_PIN 5
 #include <ESP8266WiFi.h>
+#include <ESP8266mDNS.h>
+#include <WiFiUdp.h>
+#include <ArduinoOTA.h>
 #endif
 
 //
@@ -104,13 +117,32 @@ void setup()
 #ifdef STATIC_MODE
   WiFi.config(IPAddress(ip), IPAddress(gateway), IPAddress(subnet));
 #endif
-  WiFi.begin(W_SSID, W_PASSWORD);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     // Blink the LED
-    digitalWrite(LED_PIN, ledPinStatus); // Write LED high/low
-    ledPinStatus = (ledPinStatus == HIGH) ? LOW : HIGH;
-    delay(100);
+    for ( byte x = 0; x > 20; x++) {
+      digitalWrite(LED_PIN, ledPinStatus); // Write LED high/low
+      ledPinStatus = (ledPinStatus == HIGH) ? LOW : HIGH;
+      delay(100);
+      ESP.restart();
+    }
   }
+
+  // Port defaults to 8266
+  ArduinoOTA.setPort(OtaPort);
+
+  // Hostname defaults to esp8266-[ChipID]
+  ArduinoOTA.setHostname(OtaHostname);
+
+  // No authentication by default
+  ArduinoOTA.setPassword(OtaPassword);
+
+  // Password can be set with it's md5 value as well
+  // MD5(admin) = 21232f297a57a5a743894a0e4a801fc3
+  // ArduinoOTA.setPasswordHash("21232f297a57a5a743894a0e4a801fc3");
+
+  ArduinoOTA.begin();
   // Start the server
   digitalWrite(LED_PIN, HIGH);
   MBServer.begin();
@@ -123,6 +155,8 @@ void setup()
 
 void loop()
 {
+  ArduinoOTA.handle();
+
   boolean flagClientConnected = 0;
   byte byteFN = MB_FC_NONE;
   int Start;

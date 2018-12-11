@@ -26,9 +26,9 @@ const char* ssid = "..........";
 const char* password = "..........";
 
 // OTA config
-long OtaPort = 8266; // Port defaults to 8266
-const char* OtaHostname = "..........";
-const char* OtaPassword = "..........";
+long Port = 8266; // Port defaults to 8266
+const char* Hostname = "BridgeTCP/RTU";
+const char* Password = "admin";
 #endif
 
 //----------------------------------------------------------------------------------------------------
@@ -121,22 +121,19 @@ void setup()
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     // Blink the LED
-    for ( byte x = 0; x > 20; x++) {
-      digitalWrite(LED_PIN, ledPinStatus); // Write LED high/low
-      ledPinStatus = (ledPinStatus == HIGH) ? LOW : HIGH;
-      delay(100);
-      ESP.restart();
-    }
+    digitalWrite(LED_PIN, ledPinStatus); // Write LED high/low
+    ledPinStatus = (ledPinStatus == HIGH) ? LOW : HIGH;
+    delay(100);
   }
 
   // Port defaults to 8266
-  ArduinoOTA.setPort(OtaPort);
+  ArduinoOTA.setPort(Port);
 
   // Hostname defaults to esp8266-[ChipID]
-  ArduinoOTA.setHostname(OtaHostname);
+  ArduinoOTA.setHostname(Hostname);
 
   // No authentication by default
-  ArduinoOTA.setPassword(OtaPassword);
+  ArduinoOTA.setPassword(Password);
 
   // Password can be set with it's md5 value as well
   // MD5(admin) = 21232f297a57a5a743894a0e4a801fc3
@@ -157,7 +154,6 @@ void loop()
 {
   ArduinoOTA.handle();
 
-  boolean flagClientConnected = 0;
   byte byteFN = MB_FC_NONE;
   int Start;
   int WordDataLength;
@@ -175,7 +171,6 @@ void loop()
   while (client.connected()) {
     if (client.available())
     {
-      flagClientConnected = 1;
       int i = 0;
       while (client.available())
       {
@@ -217,7 +212,6 @@ void loop()
 
           MessageLength = ByteDataLength + 9;
           client.write((const uint8_t *)ByteArray, MessageLength);
-          client.stop();
           node.clearResponseBuffer(); // Clear the response buffer
           byteFN = MB_FC_NONE;
         }
@@ -242,7 +236,6 @@ void loop()
 
           MessageLength = ByteDataLength + 9;
           client.write((const uint8_t *)ByteArray, MessageLength);
-          client.stop();
           node.clearResponseBuffer(); // Clear the response buffer
           byteFN = MB_FC_NONE;
         }
@@ -266,7 +259,6 @@ void loop()
 
           MessageLength = ByteDataLength + 9;
           client.write((const uint8_t *)ByteArray, MessageLength);
-          client.stop();
           node.clearResponseBuffer(); // Clear the response buffer
           byteFN = MB_FC_NONE;
         }
@@ -289,7 +281,6 @@ void loop()
           }
           MessageLength = ByteDataLength + 9;
           client.write((const uint8_t *)ByteArray, MessageLength);
-          client.stop();
           node.clearResponseBuffer(); // Clear the response buffer
           byteFN = MB_FC_NONE;
         }
@@ -301,7 +292,7 @@ void loop()
           ByteArray[5] = 6; //Number of bytes after this one.
           MessageLength = 12;
           client.write((const uint8_t *)ByteArray, MessageLength);
-          client.stop();
+          //client.stop();
           node.clearTransmitBuffer(); // Clear the response buffer
           byteFN = MB_FC_NONE;
         }
@@ -313,7 +304,6 @@ void loop()
           ByteArray[5] = 6; //Number of bytes after this one.
           MessageLength = 12;
           client.write((const uint8_t *)ByteArray, MessageLength);
-          client.stop();
           node.clearTransmitBuffer(); // Clear the response buffer
           byteFN = MB_FC_NONE;
         }
@@ -329,7 +319,6 @@ void loop()
           }
           MessageLength = 12;
           client.write((const uint8_t *)ByteArray, MessageLength);
-          client.stop();
           node.clearTransmitBuffer(); // Clear the response buffer
           byteFN = MB_FC_NONE;
         }
@@ -339,7 +328,4 @@ void loop()
 
   }
   client.stop();
-  if (flagClientConnected == 1) {
-    flagClientConnected = 0;
-  }
 }

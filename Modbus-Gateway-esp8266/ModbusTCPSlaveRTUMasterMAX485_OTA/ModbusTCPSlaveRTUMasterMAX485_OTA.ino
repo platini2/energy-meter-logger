@@ -1,7 +1,7 @@
 // Include these libraries for using the RS-232 to RS-485 adaptor and Modbus functions
-#include <ModbusMaster232.h>
+#include <ModBusMasterMax485.h>
 
-//---------------------------------- ONLY CONFIG THIS----------------------------------------------------
+//---------------------------------- ONLY CONFIG THIS ----------------------------------------------------
 
 #define MB_PORT 502
 #define SLAVEID 1          // id device rs485 connected.
@@ -22,8 +22,8 @@ byte gateway[] = { 192, 168, 0, 1 };
 
 #ifdef MB_ESP8266
 // Wifi Settings
-const char* ssid = "..........";
-const char* password = "..........";
+const char* ssid = "ELECTRICO";
+const char* password = "00138F1c0203";
 
 // OTA config
 long Port = 8266; // Port defaults to 8266
@@ -84,8 +84,8 @@ EthernetServer MBServer(MB_PORT);
 WiFiServer MBServer(MB_PORT);
 #endif
 
-// Instantiate ModbusMaster object as slave ID and set GPIO to RS485_ENABLE_PIN half duplex adaptor.
-ModbusMaster232 node(SLAVEID, RS485_ENABLE_PIN);
+// Instantiate ModbusMaster object as set GPIO to RS485_ENABLE_PIN half duplex adaptor.
+ModBusMasterMax485 node(RS485_ENABLE_PIN);
 
 byte ByteArray[260];
 bool ledPinStatus = LOW;
@@ -155,6 +155,7 @@ void loop()
   ArduinoOTA.handle();
 
   byte byteFN = MB_FC_NONE;
+  byte UID = 1;
   int Start;
   int WordDataLength;
   int ByteDataLength;
@@ -181,6 +182,7 @@ void loop()
       client.flush();
 #endif
       byteFN = ByteArray[MB_TCP_FUNC];
+      UID = ByteArray[MB_TCP_UID];
       Start = word(ByteArray[MB_TCP_REGISTER_START], ByteArray[MB_TCP_REGISTER_START + 1]);
       WordDataLength = word(ByteArray[MB_TCP_REGISTER_NUMBER], ByteArray[MB_TCP_REGISTER_NUMBER + 1]);
     }
@@ -199,6 +201,8 @@ void loop()
           ByteDataLength = WordDataLength * 2;
           ByteArray[5] = ByteDataLength + 3; //Number of bytes after this one.
           ByteArray[8] = ByteDataLength;     //Number of bytes after this one (or number of bytes of data).
+
+          node.slaveID(UID);
 
           int result = node.readCoils(Start, WordDataLength);
 
@@ -224,6 +228,8 @@ void loop()
           ByteArray[5] = ByteDataLength + 3; //Number of bytes after this one.
           ByteArray[8] = ByteDataLength;     //Number of bytes after this one (or number of bytes of data).
 
+          node.slaveID(UID);
+
           int result = node.readDiscreteInputs(Start, WordDataLength);
 
           for (int i = 0; i < WordDataLength; i++)
@@ -246,6 +252,8 @@ void loop()
           ByteDataLength = WordDataLength * 2;
           ByteArray[5] = ByteDataLength + 3; //Number of bytes after this one.
           ByteArray[8] = ByteDataLength;     //Number of bytes after this one (or number of bytes of data).
+
+          node.slaveID(UID);
 
           int result = node.readHoldingRegisters(Start, WordDataLength);
 
@@ -270,6 +278,8 @@ void loop()
           ByteArray[5] = ByteDataLength + 3; //Number of bytes after this one.
           ByteArray[8] = ByteDataLength;     //Number of bytes after this one (or number of bytes of data).
 
+          node.slaveID(UID);
+
           int result = node.readInputRegisters(Start, WordDataLength);
 
           for (int i = 0; i < WordDataLength; i++)
@@ -288,6 +298,8 @@ void loop()
 
       case MB_FC_WRITE_COIL:  // 05 Write Coils
         {
+          node.slaveID(UID);
+
           int result =  node.writeSingleCoil(Start, ByteArray[MB_TCP_REGISTER_NUMBER + 1]);
           ByteArray[5] = 6; //Number of bytes after this one.
           MessageLength = 12;
@@ -300,6 +312,8 @@ void loop()
 
       case MB_FC_WRITE_REGISTER:  // 06 Write Holding Register
         {
+          node.slaveID(UID);
+
           int result =  node.writeSingleRegister(Start, word(ByteArray[MB_TCP_REGISTER_NUMBER], ByteArray[MB_TCP_REGISTER_NUMBER + 1]));
           ByteArray[5] = 6; //Number of bytes after this one.
           MessageLength = 12;
@@ -311,6 +325,8 @@ void loop()
 
       case MB_FC_WRITE_MULTIPLE_REGISTERS:    //16 Write Multiple Registers
         {
+          node.slaveID(UID);
+
           ByteDataLength = WordDataLength * 2;
           ByteArray[5] = ByteDataLength + 3; //Number of bytes after this one.
           for (int i = 0; i < WordDataLength; i++)

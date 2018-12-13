@@ -4,7 +4,6 @@
 //---------------------------------- ONLY CONFIG THIS ----------------------------------------------------
 
 #define MB_PORT 502
-#define SLAVEID 1          // id device rs485 connected.
 #define BAUDRATE 9600      //rate de baud a comunicate RS485
 #define RS485_ENABLE_PIN 0 //pinul GPIO0 or GPIO2 (GPIO0 use in PCB Git), if use arduino with ethernet shield any unused pin
 

@@ -22,8 +22,8 @@ byte gateway[] = { 192, 168, 0, 1 };
 
 #ifdef MB_ESP8266
 // Wifi Settings
-const char* ssid = "ELECTRICO";
-const char* password = "00138F1c0203";
+const char* ssid = ".........";
+const char* password = ".........";
 
 // OTA config
 long Port = 8266; // Port defaults to 8266

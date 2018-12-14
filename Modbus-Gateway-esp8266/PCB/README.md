@@ -1,4 +1,4 @@
-# PCB for bridge TCP to RTU vía ESP-01 and MAX485.
+# PCB for bridge TCP to RTU via ESP-01 and MAX485.
 
 Fritzing file and gerber zip available.
 

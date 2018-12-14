@@ -1,11 +1,11 @@
 Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger, change to modbus_tk module and add new industrial devices metters.
-Add support for ModbusTCP and add bridge RTU to TCP vía ESP8266. Added possibility to use more than one InfluxDB server (or database)
+Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266. Added possibility to use more than one InfluxDB server (or database)
 
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi/Orange Pi and plot graphs of your energy consumption.
 Its been verified to work with a Raspberry Pi and Orange Pi Zero with a Linksprite RS485 shield and USB to RS485 adapter for reading values from WEBIQ131D / SDM120M (SDM120CTM, SDM120CT-MV)  /, WEBIQ343L / SDM630M, YG194E-9SY and YG889E-9SY. By changing the meters.yml file and making a corresponding [model].yml file it should be possible to use other modbus enabled models.
 
-Add support for ModbusTCP and add bridge RTU to TCP vía ESP8266
+Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266 and MAX485.
 
 ### Requirements
 

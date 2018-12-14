@@ -148,7 +148,7 @@ void ModBusMasterMax485::begin(void)
 	
 	if (_PinEnableTx){
 		pinMode(_u8PinEnableTx, OUTPUT);       //Enable rs485 
-		digitalWrite(_u8PinEnableTx, LOW);     
+		digitalWrite(_u8PinEnableTx, HIGH);     
 	}
 }
 
@@ -174,7 +174,7 @@ void ModBusMasterMax485::begin(unsigned long BaudRate )
 	
 	if (_PinEnableTx){
 		pinMode(_u8PinEnableTx, OUTPUT);       //Enable rs485 
-		digitalWrite(_u8PinEnableTx, LOW);     
+		digitalWrite(_u8PinEnableTx, HIGH);     
 	}
 }
 
@@ -767,7 +767,7 @@ uint8_t ModBusMasterMax485::ModbusMasterTransaction(uint8_t u8MBFunction)
   
   // transmit request on the rs485 interface
   if (_PinEnableTx){
-  digitalWrite(_u8PinEnableTx, HIGH);     // activate pin
+  digitalWrite(_u8PinEnableTx, LOW);     // activate pin
   delay(1);
   }
   for (i = 0; i < u8ModbusADUSize; i++)
@@ -775,10 +775,11 @@ uint8_t ModBusMasterMax485::ModbusMasterTransaction(uint8_t u8MBFunction)
 		Serial.print(char(u8ModbusADU[i]));
   }
 
-  delay(2);
+  Serial.flush();
+  //delay(2);
   
   if (_PinEnableTx)
-	digitalWrite(_u8PinEnableTx, LOW);     // deactivate pin
+	digitalWrite(_u8PinEnableTx, HIGH);     // deactivate pin
   
   u8ModbusADUSize = 1;
   

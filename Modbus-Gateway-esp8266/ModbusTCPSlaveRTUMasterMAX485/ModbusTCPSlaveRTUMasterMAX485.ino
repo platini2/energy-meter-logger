@@ -8,8 +8,11 @@
 #define RS485_ENABLE_PIN 0 //pinul GPIO0 or GPIO2 (GPIO0 use in PCB Git), if use arduino with ethernet shield any unused pin
 
 // Select board (possibility to use ethernet)
-//#define MB_ETHERNET
+//#define MB_ETHERNET  // Only with W5100 and library versión 1.1.2
 #define MB_ESP8266
+
+// ArduinoOTA Enabled (only with ESP8266 board)
+#define OTA
 
 // Update these with values suitable for your network.
 #define STATIC_MODE  // static IP address config (DHCP or static DHCP lease if comment this line)
@@ -21,13 +24,16 @@ byte gateway[] = { 192, 168, 0, 1 };
 
 #ifdef MB_ESP8266
 // Wifi Settings
-const char* ssid = ".........";
-const char* password = ".........";
+const char* ssid = "......";
+const char* password = "......";
 
+#ifdef OTA
 // OTA config
 long Port = 8266; // Port defaults to 8266
 const char* Hostname = "BridgeTCP/RTU";
 const char* Password = "admin";
+
+#endif
 #endif
 
 //----------------------------------------------------------------------------------------------------
@@ -39,9 +45,11 @@ const char* Password = "admin";
 #ifdef MB_ESP8266
 #define LED_PIN 5
 #include <ESP8266WiFi.h>
+#ifdef OTA
 #include <ESP8266mDNS.h>
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
+#endif
 #endif
 
 //
@@ -124,7 +132,7 @@ void setup()
     ledPinStatus = (ledPinStatus == HIGH) ? LOW : HIGH;
     delay(100);
   }
-
+#ifdef OTA
   // Port defaults to 8266
   ArduinoOTA.setPort(Port);
 
@@ -139,6 +147,7 @@ void setup()
   // ArduinoOTA.setPasswordHash("21232f297a57a5a743894a0e4a801fc3");
 
   ArduinoOTA.begin();
+#endif
   // Start the server
   digitalWrite(LED_PIN, HIGH);
   MBServer.begin();
@@ -151,7 +160,11 @@ void setup()
 
 void loop()
 {
+#ifdef MB_ESP8266
+#ifdef OTA
   ArduinoOTA.handle();
+#endif
+#endif
 
   byte byteFN = MB_FC_NONE;
   byte UID = 1;

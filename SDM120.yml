@@ -1,7 +1,7 @@
 Voltage Phase 1 :
  - 0 # Adress decimal
  - 2 # Length word
- - 1 # Data Type. 1=Float, 2=Long, 3=Integer
+ - 1 # Data Type. 1=Float(ABCD), 2=Long(ABCD), 3=Integer, 4=Long(CDAB)
 Current Phase 1 :
  - 6
  - 2

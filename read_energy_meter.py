@@ -92,7 +92,7 @@ class DataCollector:
                     for parameter in parameters:
                         # If random readout errors occour, e.g. CRC check fail, test to uncomment the following row
                         #time.sleep(0.01) # Sleep for 10 ms between each parameter read to avoid errors
-                        retries = 10
+                        retries = 3
                         while retries > 0:
                             try:
                                 retries -= 1
@@ -103,6 +103,10 @@ class DataCollector:
                                         resultado = masterRTU.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>l')
                                     elif parameters[parameter][2] == 3:
                                         resultado = masterRTU.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1])
+                                    elif parameters[parameter][2] == 4:
+                                        resultadoTemp = masterRTU.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1])
+                                        resultado = [0,0]
+                                        resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
                                 elif meter['function'] == 4:
                                     if parameters[parameter][2] == 1:
                                         resultado = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>f')
@@ -110,6 +114,10 @@ class DataCollector:
                                         resultado = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>l')
                                     elif parameters[parameter][2] == 3:
                                         resultado = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1])
+                                    elif parameters[parameter][2] == 4:
+                                        resultadoTemp = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1])
+                                        resultado = [0,0]
+                                        resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
                                 datas[meter['id']][parameter] = resultado[0]
                                 retries = 0
                                 pass
@@ -137,7 +145,7 @@ class DataCollector:
 
                     datas[meter['id']]['ReadTime'] =  time.time() - start_time
                 elif meter['conexion'] == 'T':
-                    masterTCP = modbus_tcp.TcpMaster(meter['direction'],meter['port'])
+                    masterTCP = modbus_tcp.TcpMaster(host=meter['direction'],port=meter['port'])
 					
                     masterTCP.set_timeout(meter['timeout'])
 
@@ -149,7 +157,7 @@ class DataCollector:
                     for parameter in parameters:
                         # If random readout errors occour, e.g. CRC check fail, test to uncomment the following row
                         #time.sleep(0.01) # Sleep for 10 ms between each parameter read to avoid errors
-                        retries = 10
+                        retries = 3
                         while retries > 0:
                             try:
                                 retries -= 1
@@ -160,6 +168,10 @@ class DataCollector:
                                         resultado = masterTCP.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>l')
                                     elif parameters[parameter][2] == 3:
                                         resultado = masterTCP.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1])
+                                    elif parameters[parameter][2] == 4:
+                                        resultadoTemp = masterTCP.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1])
+                                        resultado = [0,0]
+                                        resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
                                 elif meter['function'] == 4:
                                     if parameters[parameter][2] == 1:
                                         resultado = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>f')
@@ -167,6 +179,10 @@ class DataCollector:
                                         resultado = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>l')
                                     elif parameters[parameter][2] == 3:
                                         resultado = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1])
+                                    elif parameters[parameter][2] == 4:
+                                        resultadoTemp = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1])
+                                        resultado = [0,0]
+                                        resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
                                 datas[meter['id']][parameter] = resultado[0]
                                 retries = 0
                                 pass

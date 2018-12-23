@@ -71,9 +71,13 @@ class DataCollector:
 
         datas = dict()
         meter_id_name = dict() # mapping id to name
+        meter_slave_id = dict() # mapping list to id
+        list = 0
 
         for meter in meters:
-            meter_id_name[meter['id']] = meter['name']
+            list = list + 1
+            meter_id_name[list] = meter['name']
+            meter_slave_id[list] = meter['id']
 			
             try:
                 if meter['conexion'] == 'R':
@@ -84,10 +88,10 @@ class DataCollector:
                     masterRTU.set_timeout(meter['timeout'])
                     masterRTU.set_verbose(True)
 
-                    log.debug('Reading meter %s.' % (meter['id']))
+                    log.debug('Reading meter %s.' % (meter['name']))
                     start_time = time.time()
                     parameters = yaml.load(open(meter['type']))
-                    datas[meter['id']] = dict()
+                    datas[list] = dict()
 
                     for parameter in parameters:
                         # If random readout errors occour, e.g. CRC check fail, test to uncomment the following row
@@ -118,7 +122,7 @@ class DataCollector:
                                         resultadoTemp = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1])
                                         resultado = [0,0]
                                         resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
-                                datas[meter['id']][parameter] = resultado[0]
+                                datas[list][parameter] = resultado[0]
                                 retries = 0
                                 pass
                             except ValueError as ve:
@@ -143,16 +147,16 @@ class DataCollector:
                                 log.error("Unexpected error:", sys.exc_info()[0])
                                 raise
 
-                    datas[meter['id']]['ReadTime'] =  time.time() - start_time
+                    datas[list]['ReadTime'] =  time.time() - start_time
                 elif meter['conexion'] == 'T':
                     masterTCP = modbus_tcp.TcpMaster(host=meter['direction'],port=meter['port'])
 					
                     masterTCP.set_timeout(meter['timeout'])
 
-                    log.debug('Reading meter %s.' % (meter['id']))
+                    log.debug('Reading meter %s.' % (meter['name']))
                     start_time = time.time()
                     parameters = yaml.load(open(meter['type']))
-                    datas[meter['id']] = dict()
+                    datas[list] = dict()
 
                     for parameter in parameters:
                         # If random readout errors occour, e.g. CRC check fail, test to uncomment the following row
@@ -183,7 +187,7 @@ class DataCollector:
                                         resultadoTemp = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1])
                                         resultado = [0,0]
                                         resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
-                                datas[meter['id']][parameter] = resultado[0]
+                                datas[list][parameter] = resultado[0]
                                 retries = 0
                                 pass
                             except ValueError as ve:
@@ -208,17 +212,18 @@ class DataCollector:
                                 log.error("Unexpected error:", sys.exc_info()[0])
                                 raise
 
-                    datas[meter['id']]['ReadTime'] =  time.time() - start_time
+                    datas[list]['ReadTime'] =  time.time() - start_time
 				
             except modbus_tk.modbus.ModbusError as exc:
                 log.error("%s- Code=%d", exc, exc.get_exception_code())
+				
 
         json_body = [
             {
                 'measurement': 'energy',
                 'tags': {
-                    'id': meter_id,
-                    'meter': meter['name'],
+                    'id': meter_slave_id[meter_id],
+                    'meter': meter_id_name[meter_id],
                 },
                 'time': t_str,
                 'fields': datas[meter_id]
@@ -227,6 +232,8 @@ class DataCollector:
         ]
         if len(json_body) > 0:
             influx_id_name = dict() # mapping host to name
+			
+            log.debug(json_body)
 			
             for influx_config in influxdb:
                 influx_id_name[influx_config['host']] = influx_config['name']

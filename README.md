@@ -92,6 +92,12 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
     $ cd energy-meter-logger
     $ sudo python3 setup.py install
     ```    
+	
+	If the error appears:
+	```sh
+	$sudo pip3 install setuptools
+	```
+	 
 * Make script file executable
     ```sh
     $ chmod 777 read_energy_meter.py

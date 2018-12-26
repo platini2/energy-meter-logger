@@ -122,6 +122,6 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 * To run the python script at system startup. Add to following lines to the end of /etc/rc.local but before exit:
     ```sh
     # Start Energy Meter Logger
-    /home/pi/energy-meter-logger/read_energy_meter.py --interval 60 > /var/log/energy_meter.log &
+    /home/pi/energy-meter-logger/read_energy_meter.py --interval 10 > /var/log/energy_meter.log &
     ```
     Log with potential errors are found in /var/log/energy_meter.log

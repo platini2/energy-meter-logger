@@ -12,7 +12,7 @@ Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266 and MAX485.
 #### Hardware
 
 * Raspberry Pi 3 / Orange Pi One / Orange Pi Zero H2
-* [Linksprite RS485 Shield V3 for RPi](http://linksprite.com/wiki/index.php5?title=RS485/GPIO_Shield_for_Raspberry_Pi_V3.0) or a simpe [USB RS485 adapter](https://es.aliexpress.com/item/HOT-SALE-2pcs-lot-USB-to-RS485-485-Converter-Adapter-Support-Win7-XP-Vista-Linux-Mac/1699271296.html) or a [Modbus-Gateway-esp8266](https://github.com/GuillermoElectrico/Modbus-Gateway-esp8266) 
+* [Linksprite RS485 Shield V3 for RPi](http://linksprite.com/wiki/index.php?title=RS485/GPIO_Shield_for_Raspberry_Pi) or a simpe [USB RS485 adapter](https://es.aliexpress.com/item/HOT-SALE-2pcs-lot-USB-to-RS485-485-Converter-Adapter-Support-Win7-XP-Vista-Linux-Mac/1699271296.html) or a [Modbus-Gateway-esp8266](https://github.com/GuillermoElectrico/Modbus-Gateway-esp8266) 
 * Modbus based Energy Meter, e.g WEBIQ 131D / Eastron SDM120 or WEBIQ 343L / Eastron SMD630 or Industrial metter YG194E-9SY / YG889E-9SY or PZEM-016.
 
 #### Software
@@ -93,7 +93,7 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
     $ sudo python3 setup.py install
     ```    
 	
-	If the error appears:
+	If error appears use previously:
 	```sh
 	$sudo pip3 install setuptools
 	```

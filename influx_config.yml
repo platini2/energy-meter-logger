@@ -5,3 +5,4 @@ influxdb:
       user : 'root'
       password : 'root'
       dbname : 'db_meters'
+      x : 1

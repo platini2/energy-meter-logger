@@ -306,15 +306,6 @@ if __name__ == '__main__':
 
     log.info('Started app')
 
-    # Create the InfluxDB object
-#    influx_config = yaml.load(open('influx_config.yml'))
-#    client = InfluxDBClient(influx_config['host'],
-#                            influx_config['port'],
-#                            influx_config['user'],
-#                            influx_config['password'],
-#                            influx_config['dbname'])
-
-
     collector = DataCollector(influx_yaml=args.influxdb,
                               meter_yaml=args.meters)
 

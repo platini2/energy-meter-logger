@@ -25,8 +25,12 @@ class DataCollector:
         self.influx_yaml = influx_yaml
         self.influx_map = None
         self.influx_map_last_change = -1
+        self.influx_inteval_save = dict()
         log.info('InfluxDB:')
+        list = 0
         for influx_config in sorted(self.get_influxdb(), key=lambda x:sorted(x.keys())):
+            list = list + 1
+            self.influx_inteval_save[list] = influx_config['interval']
             log.info('\t {} <--> {}'.format(influx_config['host'], influx_config['name']))
         self.meter_yaml = meter_yaml
         self.max_iterations = None  # run indefinitely by default
@@ -71,8 +75,8 @@ class DataCollector:
 
         datas = dict()
         meter_id_name = dict() # mapping id to name
-        meter_slave_id = dict() # mapping list to id
-        list = 0
+        meter_slave_id = dict()
+        list = 0 # mapping list to id
 
         for meter in meters:
             list = list + 1
@@ -234,22 +238,30 @@ class DataCollector:
             influx_id_name = dict() # mapping host to name
 			
             log.debug(json_body)
+
+            list = 0
 			
             for influx_config in influxdb:
-                influx_id_name[influx_config['host']] = influx_config['name']
-				
-                DBclient = InfluxDBClient(influx_config['host'],
-                                        influx_config['port'],
-                                        influx_config['user'],
-                                        influx_config['password'],
-                                        influx_config['dbname'])
-                try:
-                    DBclient.write_points(json_body)
-                    log.info(t_str + ' Data written for %d meters in {}.' .format(influx_config['name']) % len(json_body) )
-                except Exception as e:
-                    log.error('Data not written! in {}' .format(influx_config['name']))
-                    log.error(e)
-                    raise
+                list = list + 1
+                if self.influx_inteval_save[list] <= 1:
+                    self.influx_inteval_save[list] = influx_config['interval']
+
+                    influx_id_name[influx_config['host']] = influx_config['name']
+
+                    DBclient = InfluxDBClient(influx_config['host'],
+                                            influx_config['port'],
+                                            influx_config['user'],
+                                            influx_config['password'],
+                                            influx_config['dbname'])
+                    try:
+                        DBclient.write_points(json_body)
+                        log.info(t_str + ' Data written for %d meters in {}.' .format(influx_config['name']) % len(json_body) )
+                    except Exception as e:
+                        log.error('Data not written! in {}' .format(influx_config['name']))
+                        log.error(e)
+                        raise
+                else:
+                    self.influx_inteval_save[list] = self.influx_inteval_save[list] - 1
         else:
             log.warning(t_str, 'No data sent.')
 

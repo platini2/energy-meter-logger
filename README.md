@@ -58,11 +58,11 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 ##### Step-by-step instructions
 * Add APT Repository
     ```sh
-    $ echo "deb https://dl.bintray.com/fg2it/deb-rpi-1b jessie main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+    $ echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
     ```
 * Add Bintray key
     ```sh
-    $ curl https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
+    $ curl https://packages.grafana.com/gpg.key | sudo apt-key add -
     ```
 * Now install
     ```sh

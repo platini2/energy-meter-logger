@@ -84,6 +84,7 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 #### Install Energy Meter Logger:
 * Download and install from Github and install pip3
     ```sh
+	$ sudo apt-get install git
     $ git clone https://github.com/GuillermoElectrico/energy-meter-logger
 	$ sudo apt-get install python3-pip
     ```

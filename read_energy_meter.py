@@ -241,7 +241,7 @@ class DataCollector:
         if len(json_body) > 0:
             influx_id_name = dict() # mapping host to name
 			
-            log.debug(json_body)
+#            log.debug(json_body)
 
             list = 0
 			

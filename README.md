@@ -96,7 +96,7 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 	
 	If error appears use previously:
 	```sh
-	$sudo pip3 install setuptools
+	$ sudo pip3 install setuptools
 	```
 	 
 * Make script file executable

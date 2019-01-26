@@ -228,7 +228,7 @@ class DataCollector:
 
         json_body = [
             {
-                'measurement': 'energy',
+                'measurement': 'EnergyMeters',
                 'tags': {
                     'id': meter_slave_id[meter_id],
                     'meter': meter_id_name[meter_id],

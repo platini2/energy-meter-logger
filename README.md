@@ -148,7 +148,7 @@ In the case of not having internet in the installation where you have the meter 
     ```sh
     $ sudo apt-get install i2c-tools
 	$ sudo i2cdetect -y 1
-	0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+	    0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 	00:          -- -- -- -- -- -- -- -- -- -- -- -- --
 	10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 	20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

@@ -133,7 +133,7 @@ In the case of not having internet in the installation where you have the meter 
 
 ##### Step-by-step instructions
 * First connect the RTC module
-	Connect to the corresponding pins (+3.3V, SDA1 (GPIO2), SCL1 (GPIO3) and GND) of the raspberry pi (depending on the model, in google there are examples).  
+	Connect to the corresponding pins +3.3V, SDA1 (GPIO2), SCL1 (GPIO3) and GND of the raspberry pi (depending on the model, in google there are examples).  
 
 * Enable I2C port vía raspi-config*
     ```sh
@@ -148,7 +148,7 @@ In the case of not having internet in the installation where you have the meter 
     ```sh
     $ sudo apt-get install i2c-tools
 	$ sudo i2cdetect -y 1
-		0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+	0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 	00:          -- -- -- -- -- -- -- -- -- -- -- -- --
 	10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 	20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

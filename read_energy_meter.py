@@ -52,7 +52,7 @@ class DataCollector:
                 log.warning('Failed to re-load meter map, going on with the old one.')
                 log.warning(e)
         return self.meter_map
-		
+
     def get_influxdb(self):
         assert path.exists(self.influx_yaml), 'InfluxDB map not found: %s' % self.influx_yaml
         if path.getmtime(self.influx_yaml) != self.influx_map_last_change:
@@ -86,13 +86,13 @@ class DataCollector:
             list = list + 1
             meter_id_name[list] = meter['name']
             meter_slave_id[list] = meter['id']
-			
+
             try:
                 if meter['conexion'] == 'R':
                     masterRTU = modbus_rtu.RtuMaster(
                         serial.Serial(port=PORT, baudrate=meter['baudrate'], bytesize=meter['bytesize'], parity=meter['parity'], stopbits=meter['stopbits'], xonxoff=0)
                     )
-					
+
                     masterRTU.set_timeout(meter['timeout'])
                     masterRTU.set_verbose(True)
 
@@ -158,7 +158,7 @@ class DataCollector:
                     datas[list]['ReadTime'] =  time.time() - start_time
                 elif meter['conexion'] == 'T':
                     masterTCP = modbus_tcp.TcpMaster(host=meter['direction'],port=meter['port'])
-					
+
                     masterTCP.set_timeout(meter['timeout'])
 
                     log.debug('Reading meter %s.' % (meter['name']))
@@ -221,10 +221,10 @@ class DataCollector:
                                 raise
 
                     datas[list]['ReadTime'] =  time.time() - start_time
-				
+
             except modbus_tk.modbus.ModbusError as exc:
                 log.error("%s- Code=%d", exc, exc.get_exception_code())
-				
+
 
         json_body = [
             {
@@ -240,11 +240,11 @@ class DataCollector:
         ]
         if len(json_body) > 0:
             influx_id_name = dict() # mapping host to name
-			
+
 #            log.debug(json_body)
 
             list = 0
-			
+
             for influx_config in influxdb:
                 list = list + 1
                 if self.influx_inteval_save[list] > 0:

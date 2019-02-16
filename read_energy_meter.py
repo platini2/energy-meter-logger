@@ -119,6 +119,10 @@ class DataCollector:
                                         resultadoTemp = masterRTU.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1])
                                         resultado = [0,0]
                                         resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
+                                    elif parameters[parameter][2] == 5:
+                                        resultado = masterRTU.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>I')
+                                    elif parameters[parameter][2] == 6:
+                                        resultado = masterRTU.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>L')
                                 elif meter['function'] == 4:
                                     if parameters[parameter][2] == 1:
                                         resultado = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>f')
@@ -130,6 +134,10 @@ class DataCollector:
                                         resultadoTemp = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1])
                                         resultado = [0,0]
                                         resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
+                                    elif parameters[parameter][2] == 5:
+                                        resultado = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>I')
+                                    elif parameters[parameter][2] == 6:
+                                        resultado = masterRTU.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>L')
                                 datas[list][parameter] = resultado[0]
                                 retries = 0
                                 pass
@@ -184,6 +192,10 @@ class DataCollector:
                                         resultadoTemp = masterTCP.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1])
                                         resultado = [0,0]
                                         resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
+                                    elif parameters[parameter][2] == 5:
+                                        resultado = masterTCP.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>I')
+                                    elif parameters[parameter][2] == 6:
+                                        resultado = masterTCP.execute(meter['id'], cst.READ_HOLDING_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>L')
                                 elif meter['function'] == 4:
                                     if parameters[parameter][2] == 1:
                                         resultado = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>f')
@@ -195,6 +207,10 @@ class DataCollector:
                                         resultadoTemp = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1])
                                         resultado = [0,0]
                                         resultado[0] = (resultadoTemp[1]<<16)|resultadoTemp[0]
+                                    elif parameters[parameter][2] == 5:
+                                        resultado = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>I')
+                                    elif parameters[parameter][2] == 6:
+                                        resultado = masterTCP.execute(meter['id'], cst.READ_INPUT_REGISTERS, parameters[parameter][0], parameters[parameter][1], data_format='>L')
                                 datas[list][parameter] = resultado[0]
                                 retries = 0
                                 pass

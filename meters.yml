@@ -47,3 +47,13 @@ meters:
       port : 502  # destination port
       timeout  : 5.0   # seconds
       function : 4    # 3 = Read Holding register or 4 = Read Input register 
+    - name : Meter Group 6
+      type : DDS238-1_ZN.yml
+      conexion: T  # R = RTU 232/485 | T = TCP IPv4
+      id : 1     # this is the slave address number
+      baudrate : 4800   # Baud
+      bytesize : 8
+      parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
+      stopbits : 1
+      timeout  : 1.0   # seconds
+      function : 3    # 3 = Read Holding register or 4 = Read Input register 

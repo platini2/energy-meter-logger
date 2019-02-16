@@ -1,7 +1,7 @@
 Voltage Phase : # 1LSB -> 0.1V
  - 0 # Adress decimal
  - 1 # Length word
- - 3 # Data Type. 1=Float(ABCD), 2=Long(ABCD), 3=Integer, 4=Long(CDAB)
+ - 3 # Data Type. 1=Float(ABCD), 2=Long(ABCD), 3=Integer, 4=Long(CDAB), 5=Word (Unsigned Int), 6=Dword (Unsigned Long)
 Current Phase : # 1LSB -> 0.001A
  - 1
  - 2

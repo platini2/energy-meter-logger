@@ -68,7 +68,6 @@ class DataCollector:
         return self.influx_map
 
     def collect_and_store(self):
-        #instrument.debug = True
         meters = self.get_meters()
         influxdb = self.get_influxdb()
         t_utc = datetime.utcnow()
@@ -253,7 +252,6 @@ class DataCollector:
         ]
         
         if len(json_body) > 0:
-#            influx_id_name = dict() # mapping host to name
 
 #            log.debug(json_body)
 
@@ -264,8 +262,6 @@ class DataCollector:
                 if self.influx_inteval_save[list] > 0:
                     if self.influx_inteval_save[list] <= 1:
                         self.influx_inteval_save[list] = influx_config['interval']
-
- #                       influx_id_name[influx_config['host']] = influx_config['name']
 
                         DBclient = InfluxDBClient(influx_config['host'],
                                                 influx_config['port'],

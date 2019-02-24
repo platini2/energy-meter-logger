@@ -27,11 +27,8 @@ class DataCollector:
         self.influx_map_last_change = -1
         self.influx_inteval_save = dict()
         log.info('InfluxDB:')
-#        list = 0
         for influx_config in sorted(self.get_influxdb(), key=lambda x:sorted(x.keys())):
-#            list = list + 1
-#            self.influx_inteval_save[list] = influx_config['interval']
-            log.info('\t {} <--> {}'.format(influx_config['host'], influx_config['name']))
+            log.info('\t {} <--> {} , Interval: {}'.format(influx_config['host'], influx_config['name'], influx_config['interval']))
         self.meter_yaml = meter_yaml
         self.max_iterations = None  # run indefinitely by default
         self.meter_map = None
@@ -254,8 +251,9 @@ class DataCollector:
             }
             for meter_id in datas
         ]
+        
         if len(json_body) > 0:
-            influx_id_name = dict() # mapping host to name
+#            influx_id_name = dict() # mapping host to name
 
 #            log.debug(json_body)
 
@@ -267,7 +265,7 @@ class DataCollector:
                     if self.influx_inteval_save[list] <= 1:
                         self.influx_inteval_save[list] = influx_config['interval']
 
-                        influx_id_name[influx_config['host']] = influx_config['name']
+ #                       influx_id_name[influx_config['host']] = influx_config['name']
 
                         DBclient = InfluxDBClient(influx_config['host'],
                                                 influx_config['port'],

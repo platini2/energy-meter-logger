@@ -3,7 +3,7 @@ Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266. Added possibil
 
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi/Orange Pi and plot graphs of your energy consumption.
-Its been verified to work with a Raspberry Pi and Orange Pi One / Zero with a Linksprite RS485 shield and USB to RS485 adapter or use Modbus-Gateway-esp8266 for reading values from SDM120M (SDM120CTM, SDM120CT-MV), SDM630M, YG194E-9SY, YG194E-95Y, YG889E-9SY and PZEM-016. By changing the meters.yml file and making a corresponding [model].yml file it should be possible to use other modbus enabled models.
+Its been verified to work with a Raspberry Pi and Orange Pi One / Zero with a Linksprite RS485 shield and USB to RS485 adapter or use Modbus-Gateway-esp8266 for reading values from SDM120M (SDM120CTM, SDM120CT-MV), SDM630M, YG194E-9SY, YG194E-95Y, YG889E-9SY, PZEM-016 and DDS238-1 ZN. By changing the meters.yml file and making a corresponding [model].yml file it should be possible to use other modbus enabled models.
 
 Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266 and MAX485.
 
@@ -13,7 +13,7 @@ Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266 and MAX485.
 
 * Raspberry Pi 3 / Orange Pi One / Orange Pi Zero H2
 * [Linksprite RS485 Shield V3 for RPi](http://linksprite.com/wiki/index.php?title=RS485/GPIO_Shield_for_Raspberry_Pi) or a simpe [USB RS485 adapter](https://es.aliexpress.com/item/HOT-SALE-2pcs-lot-USB-to-RS485-485-Converter-Adapter-Support-Win7-XP-Vista-Linux-Mac/1699271296.html) or a [Modbus-Gateway-esp8266](https://github.com/GuillermoElectrico/Modbus-Gateway-esp8266) 
-* Modbus based Energy Meter, e.g Eastron SDM120M or Eastron SMD630M or PZEM-016 or Industrial metter YG194E-9SY / YG889E-9SY.
+* Modbus based Energy Meter, e.g Eastron SDM120M or Eastron SMD630M or PZEM-016 or DDS238-1 ZN or Industrial metter YG194E-9SY / YG889E-9SY.
 
 #### Software
 

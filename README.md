@@ -17,7 +17,7 @@ Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266 and MAX485.
 
 #### Software
 
-* Rasbian or armbian
+* Rasbian or armbian or dietpi
 * Python 3.4 and PIP3
 * [modbus_tk](https://github.com/ljean/modbus-tk)
 * [InfluxDB](https://docs.influxdata.com/influxdb/v1.3/)

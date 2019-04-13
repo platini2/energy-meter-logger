@@ -42,7 +42,7 @@ class DataCollector:
         if path.getmtime(self.meter_yaml) != self.meter_map_last_change:
             try:
                 log.info('Reloading meter map as file changed')
-                new_map = yaml.load(open(self.meter_yaml))
+                new_map = yaml.load(open(self.meter_yaml), Loader=yaml.FullLoader)
                 self.meter_map = new_map['meters']
                 self.meter_map_last_change = path.getmtime(self.meter_yaml)
             except Exception as e:
@@ -55,7 +55,7 @@ class DataCollector:
         if path.getmtime(self.influx_yaml) != self.influx_map_last_change:
             try:
                 log.info('Reloading influxDB map as file changed')
-                new_map = yaml.load(open(self.influx_yaml))
+                new_map = yaml.load(open(self.influx_yaml), Loader=yaml.FullLoader)
                 self.influx_map = new_map['influxdb']
                 self.influx_map_last_change = path.getmtime(self.influx_yaml)
                 list = 0
@@ -94,7 +94,7 @@ class DataCollector:
 
                     log.debug('Reading meter %s.' % (meter['name']))
                     start_time = time.time()
-                    parameters = yaml.load(open(meter['type']))
+                    parameters = yaml.load(open(meter['type']), Loader=yaml.FullLoader)
                     datas[list] = dict()
 
                     for parameter in parameters:
@@ -167,7 +167,7 @@ class DataCollector:
 
                     log.debug('Reading meter %s.' % (meter['name']))
                     start_time = time.time()
-                    parameters = yaml.load(open(meter['type']))
+                    parameters = yaml.load(open(meter['type']), Loader=yaml.FullLoader)
                     datas[list] = dict()
 
                     for parameter in parameters:

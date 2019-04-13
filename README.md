@@ -203,3 +203,50 @@ In the case of not having internet in the installation where you have the meter 
 	sleep 1
 	hwclock -s --rtc /dev/rtc0
     ```
+
+#### Optional, Configure Grafana to anonymous login and redirect to port 80
+
+If you need to access grafana without adding port 3000 in the address, and do not want to have to log in every time you want to see. Follow the steps below.
+
+##### Step-by-step instructions
+* First install nginx
+    ```sh
+    $ sudo apt-get update && sudo apt-get install nginx
+    ```
+
+* Configure nginx default config
+    ```sh
+	$ sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.old
+    $ sudo nano /etc/nginx/sites-available/default
+    ```
+
+	Add
+	```sh
+	server {
+		listen 80;
+		server_name your-domain-name.com;
+		location / {
+			proxy_set_header   X-Real-IP $remote_addr;
+			proxy_set_header   Host      $http_host;
+			proxy_pass         http://127.0.0.1:3000;
+		}
+	}
+	```
+
+	Exit and save.
+
+*  Edit grafana config
+    ```sh
+    $ sudo nano /etc/grafana/grafana.ini
+    ```
+
+	Modify this line to enable Anonymoun Auth
+	```sh
+	[auth.anonymous]
+	# enable anonymous access
+	enabled = true
+	```
+
+	Exit and save.
+
+	Reboot the system a enjoy it

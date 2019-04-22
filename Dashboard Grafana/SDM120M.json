@@ -974,7 +974,7 @@
         "#d44a3a"
       ],
       "datasource": "InfluxDB_Metters",
-      "format": "kvoltampreact",
+      "format": "none",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1006,8 +1006,8 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
+      "postfix": " kVARh",
+      "postfixFontSize": "80%",
       "prefix": "",
       "prefixFontSize": "50%",
       "rangeMaps": [
@@ -1091,7 +1091,7 @@
         "#d44a3a"
       ],
       "datasource": "InfluxDB_Metters",
-      "format": "kvoltampreact",
+      "format": "none",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1122,8 +1122,8 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
+      "postfix": " kVARh",
+      "postfixFontSize": "80%",
       "prefix": "",
       "prefixFontSize": "50%",
       "rangeMaps": [
@@ -1237,5 +1237,5 @@
   "timezone": "",
   "title": "SDM120M - Casa",
   "uid": "NAiosOggz",
-  "version": 51
+  "version": 52
 }

@@ -16,6 +16,7 @@ from modbus_tk import modbus_tcp
 
 #PORT = 1
 PORT = '/dev/ttyUSB0'
+#PORT = '/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0'
 
 # Change working dir to the same dir as this script
 os.chdir(sys.path[0])

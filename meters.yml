@@ -8,7 +8,7 @@ meters:
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 0.5   # seconds
-      function : 4    # 3 = Read Holding register or 4 = Read Input register 
+      function : 4    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
     - name : Meter Group 2
       type : SDM630.yml
       conexion: R  # R = RTU 232/485 | T = TCP IPv4
@@ -18,7 +18,7 @@ meters:
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 0.5   # seconds
-      function : 4    # 3 = Read Holding register or 4 = Read Input register 
+      function : 4    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
     - name : Meter Group 3
       type : YG194E-9SY.yml
       conexion: R  # R = RTU 232/485 | T = TCP IPv4
@@ -28,7 +28,7 @@ meters:
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout : 0.5   # seconds
-      function : 3    # 3 = Read Holding register or 4 = Read Input register 
+      function : 3    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
     - name : Meter Group 4
       type : YG889E-9SY.yml
       conexion: R  # R = RTU 232/485 | T = TCP IPv4
@@ -38,7 +38,7 @@ meters:
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout : 0.5   # seconds
-      function : 3    # 3 = Read Holding register or 4 = Read Input register 
+      function : 3    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
     - name : Meter Group 5
       type : PZEM-016.yml
       conexion: T  # R = RTU 232/485 | T = TCP IPv4
@@ -46,7 +46,7 @@ meters:
       direction : 192.168.0.123   # IPv4 destination address
       port : 502  # destination port
       timeout  : 5.0   # seconds
-      function : 4    # 3 = Read Holding register or 4 = Read Input register 
+      function : 4    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
     - name : Meter Group 6
       type : DDS238-1_ZN.yml
       conexion: T  # R = RTU 232/485 | T = TCP IPv4
@@ -56,7 +56,7 @@ meters:
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 1.0   # seconds
-      function : 3    # 3 = Read Holding register or 4 = Read Input register 
+      function : 3    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
     - name : Meter Group 7
       type : SDM220.yml
       conexion: R  # R = RTU 232/485 | T = TCP IPv4
@@ -66,7 +66,7 @@ meters:
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 0.5   # seconds
-      function : 4    # 3 = Read Holding register or 4 = Read Input register 
+      function : 4    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
     - name : Meter Group 7
       type : SDM230.yml
       conexion: R  # R = RTU 232/485 | T = TCP IPv4
@@ -76,4 +76,14 @@ meters:
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
       timeout  : 0.5   # seconds
-      function : 4    # 3 = Read Holding register or 4 = Read Input register 
+      function : 4    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
+    - name : Meter Group 8
+      type : SMART-X96.yml
+      conexion: R  # R = RTU 232/485 | T = TCP IPv4
+      id : 1     # this is the slave address number
+      baudrate : 9600   # Baud
+      bytesize : 8
+      parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
+      stopbits : 1
+      timeout  : 0.5   # seconds
+      function : 4    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 

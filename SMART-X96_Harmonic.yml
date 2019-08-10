@@ -1,0 +1,1644 @@
+Voltage Phase 1 :
+ - 1 # Adress dec data
+ - 2 # Length word
+ - 1 # Data Type. 1=Float(ABCD), 2=Long(ABCD), 3=Integer, 4=Long(CDAB), 5=Word (Unsigned Int), 6=Dword (Unsigned Long)
+Voltage Phase 2 :
+ - 3
+ - 2
+ - 1
+Voltage Phase 3 :
+ - 5
+ - 2
+ - 1
+Voltage Phase 1-2 :
+ - 201
+ - 2
+ - 1
+Voltage Phase 2-3 :
+ - 203
+ - 2
+ - 1
+Voltage Phase 3-1 :
+ - 205
+ - 2
+ - 1
+Current Phase 1 :
+ - 7
+ - 2
+ - 1
+Current Phase 2 :
+ - 9
+ - 2
+ - 1
+Current Phase 3 :
+ - 11
+ - 2
+ - 1
+Neutral Current :
+ - 225
+ - 2
+ - 1
+Active power Phase 1 :
+ - 13
+ - 2
+ - 1
+Active power Phase 2 :
+ - 15
+ - 2
+ - 1
+Active power Phase 3 :
+ - 17
+ - 2
+ - 1
+Total Active power :
+ - 53
+ - 2
+ - 1
+Reactive power Phase 1 :
+ - 25
+ - 2
+ - 1
+Reactive power Phase 2 :
+ - 27
+ - 2
+ - 1
+Reactive power Phase 3 :
+ - 29
+ - 2
+ - 1
+Total Reactive power :
+ - 61
+ - 2
+ - 1
+Apparent power Phase 1 :
+ - 19
+ - 2
+ - 1
+Apparent power Phase 2 :
+ - 21
+ - 2
+ - 1
+Apparent power Phase 3 :
+ - 23
+ - 2
+ - 1
+Total Apparent power :
+ - 57
+ - 2
+ - 1
+Power factor Phase 1 :
+ - 31
+ - 2
+ - 1
+Power factor Phase 2 :
+ - 33
+ - 2
+ - 1
+Power factor Phase 3 :
+ - 35
+ - 2
+ - 1
+Frequency :
+ - 71
+ - 2
+ - 1
+Import active energy :
+ - 73
+ - 2
+ - 1
+Export active energy :
+ - 75
+ - 2
+ - 1
+Inductive reactive energy :
+ - 77
+ - 2
+ - 1
+Capacitive reactive energy :
+ - 79
+ - 2
+ - 1
+Voltage Phase 1 THD :
+ - 235
+ - 2
+ - 1
+Voltage Phase 2 THD :
+ - 237
+ - 2
+ - 1
+Voltage Phase 3 THD :
+ - 239
+ - 2
+ - 1
+Voltage Phase 1-2 THD :
+ - 335
+ - 2
+ - 1
+Voltage Phase 2-3 THD :
+ - 337
+ - 2
+ - 1
+Voltage Phase 3-1 THD :
+ - 339
+ - 2
+ - 1
+Current Phase 1 THD :
+ - 241
+ - 2
+ - 1
+Current Phase 2 THD :
+ - 243
+ - 2
+ - 1
+Current Phase 3 THD :
+ - 245
+ - 2
+ - 1
+Voltage Harmonic 2 L1 :
+ - 403
+ - 2
+ - 1
+Voltage Harmonic 3 L1 :
+ - 405
+ - 2
+ - 1
+Voltage Harmonic 4 L1 :
+ - 407
+ - 2
+ - 1
+Voltage Harmonic 5 L1 :
+ - 409
+ - 2
+ - 1
+Voltage Harmonic 6 L1 :
+ - 411
+ - 2
+ - 1
+Voltage Harmonic 7 L1 :
+ - 413
+ - 2
+ - 1
+Voltage Harmonic 8 L1 :
+ - 415
+ - 2
+ - 1
+Voltage Harmonic 9 L1 :
+ - 417
+ - 2
+ - 1
+Voltage Harmonic 10 L1 :
+ - 419
+ - 2
+ - 1
+Voltage Harmonic 11 L1 :
+ - 421
+ - 2
+ - 1
+Voltage Harmonic 12 L1 :
+ - 423
+ - 2
+ - 1
+Voltage Harmonic 13 L1 :
+ - 425
+ - 2
+ - 1
+Voltage Harmonic 14 L1 :
+ - 427
+ - 2
+ - 1
+Voltage Harmonic 15 L1 :
+ - 429
+ - 2
+ - 1
+Voltage Harmonic 16 L1 :
+ - 431
+ - 2
+ - 1
+Voltage Harmonic 17 L1 :
+ - 433
+ - 2
+ - 1
+Voltage Harmonic 18 L1 :
+ - 435
+ - 2
+ - 1
+Voltage Harmonic 19 L1 :
+ - 437
+ - 2
+ - 1
+Voltage Harmonic 20 L1 :
+ - 439
+ - 2
+ - 1
+Voltage Harmonic 21 L1 :
+ - 441
+ - 2
+ - 1
+Voltage Harmonic 22 L1 :
+ - 443
+ - 2
+ - 1
+Voltage Harmonic 23 L1 :
+ - 445
+ - 2
+ - 1
+Voltage Harmonic 24 L1 :
+ - 447
+ - 2
+ - 1
+Voltage Harmonic 25 L1 :
+ - 449
+ - 2
+ - 1
+Voltage Harmonic 26 L1 :
+ - 451
+ - 2
+ - 1
+Voltage Harmonic 27 L1 :
+ - 453
+ - 2
+ - 1
+Voltage Harmonic 28 L1 :
+ - 455
+ - 2
+ - 1
+Voltage Harmonic 29 L1 :
+ - 457
+ - 2
+ - 1
+Voltage Harmonic 30 L1 :
+ - 459
+ - 2
+ - 1
+Voltage Harmonic 31 L1 :
+ - 461
+ - 2
+ - 1
+Voltage Harmonic 32 L1 :
+ - 463
+ - 2
+ - 1
+Voltage Harmonic 33 L1 :
+ - 465
+ - 2
+ - 1
+Voltage Harmonic 34 L1 :
+ - 467
+ - 2
+ - 1
+Voltage Harmonic 35 L1 :
+ - 469
+ - 2
+ - 1
+Voltage Harmonic 36 L1 :
+ - 471
+ - 2
+ - 1
+Voltage Harmonic 37 L1 :
+ - 473
+ - 2
+ - 1
+Voltage Harmonic 38 L1 :
+ - 475
+ - 2
+ - 1
+Voltage Harmonic 39 L1 :
+ - 477
+ - 2
+ - 1
+Voltage Harmonic 40 L1 :
+ - 479
+ - 2
+ - 1
+Voltage Harmonic 41 L1 :
+ - 481
+ - 2
+ - 1
+Voltage Harmonic 42 L1 :
+ - 483
+ - 2
+ - 1
+Voltage Harmonic 43 L1 :
+ - 485
+ - 2
+ - 1
+Voltage Harmonic 44 L1 :
+ - 487
+ - 2
+ - 1
+Voltage Harmonic 45 L1 :
+ - 489
+ - 2
+ - 1
+Voltage Harmonic 46 L1 :
+ - 491
+ - 2
+ - 1
+Voltage Harmonic 47 L1 :
+ - 493
+ - 2
+ - 1
+Voltage Harmonic 48 L1 :
+ - 495
+ - 2
+ - 1
+Voltage Harmonic 49 L1 :
+ - 497
+ - 2
+ - 1
+Voltage Harmonic 50 L1 :
+ - 499
+ - 2
+ - 1
+Voltage Harmonic 51 L1 :
+ - 501
+ - 2
+ - 1
+Voltage Harmonic 52 L1 :
+ - 503
+ - 2
+ - 1
+Voltage Harmonic 53 L1 :
+ - 505
+ - 2
+ - 1
+Voltage Harmonic 54 L1 :
+ - 507
+ - 2
+ - 1
+Voltage Harmonic 55 L1 :
+ - 509
+ - 2
+ - 1
+Voltage Harmonic 56 L1 :
+ - 511
+ - 2
+ - 1
+Voltage Harmonic 57 L1 :
+ - 513
+ - 2
+ - 1
+Voltage Harmonic 58 L1 :
+ - 515
+ - 2
+ - 1
+Voltage Harmonic 59 L1 :
+ - 517
+ - 2
+ - 1
+Voltage Harmonic 60 L1 :
+ - 519
+ - 2
+ - 1
+Voltage Harmonic 61 L1 :
+ - 521
+ - 2
+ - 1
+Voltage Harmonic 62 L1 :
+ - 523
+ - 2
+ - 1
+Voltage Harmonic 63 L1 :
+ - 525
+ - 2
+ - 1
+Voltage Harmonic 2 L2 :
+ - 527
+ - 2
+ - 1
+Voltage Harmonic 3 L2 :
+ - 529
+ - 2
+ - 1
+Voltage Harmonic 4 L2 :
+ - 531
+ - 2
+ - 1
+Voltage Harmonic 5 L2 :
+ - 533
+ - 2
+ - 1
+Voltage Harmonic 6 L2 :
+ - 535
+ - 2
+ - 1
+Voltage Harmonic 7 L2 :
+ - 537
+ - 2
+ - 1
+Voltage Harmonic 8 L2 :
+ - 539
+ - 2
+ - 1
+Voltage Harmonic 9 L2 :
+ - 541
+ - 2
+ - 1
+Voltage Harmonic 10 L2 :
+ - 543
+ - 2
+ - 1
+Voltage Harmonic 11 L2 :
+ - 545
+ - 2
+ - 1
+Voltage Harmonic 12 L2 :
+ - 547
+ - 2
+ - 1
+Voltage Harmonic 13 L2 :
+ - 549
+ - 2
+ - 1
+Voltage Harmonic 14 L2 :
+ - 551
+ - 2
+ - 1
+Voltage Harmonic 15 L2 :
+ - 553
+ - 2
+ - 1
+Voltage Harmonic 16 L2 :
+ - 555
+ - 2
+ - 1
+Voltage Harmonic 17 L2 :
+ - 557
+ - 2
+ - 1
+Voltage Harmonic 18 L2 :
+ - 559
+ - 2
+ - 1
+Voltage Harmonic 19 L2 :
+ - 561
+ - 2
+ - 1
+Voltage Harmonic 20 L2 :
+ - 563
+ - 2
+ - 1
+Voltage Harmonic 21 L2 :
+ - 565
+ - 2
+ - 1
+Voltage Harmonic 22 L2 :
+ - 567
+ - 2
+ - 1
+Voltage Harmonic 23 L2 :
+ - 569
+ - 2
+ - 1
+Voltage Harmonic 24 L2 :
+ - 571
+ - 2
+ - 1
+Voltage Harmonic 25 L2 :
+ - 573
+ - 2
+ - 1
+Voltage Harmonic 26 L2 :
+ - 575
+ - 2
+ - 1
+Voltage Harmonic 27 L2 :
+ - 577
+ - 2
+ - 1
+Voltage Harmonic 28 L2 :
+ - 579
+ - 2
+ - 1
+Voltage Harmonic 29 L2 :
+ - 581
+ - 2
+ - 1
+Voltage Harmonic 30 L2 :
+ - 583
+ - 2
+ - 1
+Voltage Harmonic 31 L2 :
+ - 585
+ - 2
+ - 1
+Voltage Harmonic 32 L2 :
+ - 587
+ - 2
+ - 1
+Voltage Harmonic 33 L2 :
+ - 589
+ - 2
+ - 1
+Voltage Harmonic 34 L2 :
+ - 591
+ - 2
+ - 1
+Voltage Harmonic 35 L2 :
+ - 593
+ - 2
+ - 1
+Voltage Harmonic 36 L2 :
+ - 595
+ - 2
+ - 1
+Voltage Harmonic 37 L2 :
+ - 597
+ - 2
+ - 1
+Voltage Harmonic 38 L2 :
+ - 599
+ - 2
+ - 1
+Voltage Harmonic 39 L2 :
+ - 601
+ - 2
+ - 1
+Voltage Harmonic 40 L2 :
+ - 603
+ - 2
+ - 1
+Voltage Harmonic 41 L2 :
+ - 605
+ - 2
+ - 1
+Voltage Harmonic 42 L2 :
+ - 607
+ - 2
+ - 1
+Voltage Harmonic 43 L2 :
+ - 609
+ - 2
+ - 1
+Voltage Harmonic 44 L2 :
+ - 611
+ - 2
+ - 1
+Voltage Harmonic 45 L2 :
+ - 613
+ - 2
+ - 1
+Voltage Harmonic 46 L2 :
+ - 615
+ - 2
+ - 1
+Voltage Harmonic 47 L2 :
+ - 617
+ - 2
+ - 1
+Voltage Harmonic 48 L2 :
+ - 619
+ - 2
+ - 1
+Voltage Harmonic 49 L2 :
+ - 621
+ - 2
+ - 1
+Voltage Harmonic 50 L2 :
+ - 623
+ - 2
+ - 1
+Voltage Harmonic 51 L2 :
+ - 625
+ - 2
+ - 1
+Voltage Harmonic 52 L2 :
+ - 627
+ - 2
+ - 1
+Voltage Harmonic 53 L2 :
+ - 629
+ - 2
+ - 1
+Voltage Harmonic 54 L2 :
+ - 631
+ - 2
+ - 1
+Voltage Harmonic 55 L2 :
+ - 633
+ - 2
+ - 1
+Voltage Harmonic 56 L2 :
+ - 635
+ - 2
+ - 1
+Voltage Harmonic 57 L2 :
+ - 637
+ - 2
+ - 1
+Voltage Harmonic 58 L2 :
+ - 639
+ - 2
+ - 1
+Voltage Harmonic 59 L2 :
+ - 641
+ - 2
+ - 1
+Voltage Harmonic 60 L2 :
+ - 643
+ - 2
+ - 1
+Voltage Harmonic 61 L2 :
+ - 645
+ - 2
+ - 1
+Voltage Harmonic 62 L2 :
+ - 647
+ - 2
+ - 1
+Voltage Harmonic 63 L2 :
+ - 649
+ - 2
+ - 1
+Voltage Harmonic 2 L3 :
+ - 651
+ - 2
+ - 1
+Voltage Harmonic 3 L3 :
+ - 653
+ - 2
+ - 1
+Voltage Harmonic 4 L3 :
+ - 655
+ - 2
+ - 1
+Voltage Harmonic 5 L3 :
+ - 657
+ - 2
+ - 1
+Voltage Harmonic 6 L3 :
+ - 659
+ - 2
+ - 1
+Voltage Harmonic 7 L3 :
+ - 661
+ - 2
+ - 1
+Voltage Harmonic 8 L3 :
+ - 663
+ - 2
+ - 1
+Voltage Harmonic 9 L3 :
+ - 665
+ - 2
+ - 1
+Voltage Harmonic 10 L3 :
+ - 667
+ - 2
+ - 1
+Voltage Harmonic 11 L3 :
+ - 669
+ - 2
+ - 1
+Voltage Harmonic 12 L3 :
+ - 671
+ - 2
+ - 1
+Voltage Harmonic 13 L3 :
+ - 673
+ - 2
+ - 1
+Voltage Harmonic 14 L3 :
+ - 675
+ - 2
+ - 1
+Voltage Harmonic 15 L3 :
+ - 677
+ - 2
+ - 1
+Voltage Harmonic 16 L3 :
+ - 679
+ - 2
+ - 1
+Voltage Harmonic 17 L3 :
+ - 681
+ - 2
+ - 1
+Voltage Harmonic 18 L3 :
+ - 683
+ - 2
+ - 1
+Voltage Harmonic 19 L3 :
+ - 685
+ - 2
+ - 1
+Voltage Harmonic 20 L3 :
+ - 687
+ - 2
+ - 1
+Voltage Harmonic 21 L3 :
+ - 689
+ - 2
+ - 1
+Voltage Harmonic 22 L3 :
+ - 691
+ - 2
+ - 1
+Voltage Harmonic 23 L3 :
+ - 693
+ - 2
+ - 1
+Voltage Harmonic 24 L3 :
+ - 695
+ - 2
+ - 1
+Voltage Harmonic 25 L3 :
+ - 697
+ - 2
+ - 1
+Voltage Harmonic 26 L3 :
+ - 699
+ - 2
+ - 1
+Voltage Harmonic 27 L3 :
+ - 701
+ - 2
+ - 1
+Voltage Harmonic 28 L3 :
+ - 703
+ - 2
+ - 1
+Voltage Harmonic 29 L3 :
+ - 705
+ - 2
+ - 1
+Voltage Harmonic 30 L3 :
+ - 707
+ - 2
+ - 1
+Voltage Harmonic 31 L3 :
+ - 709
+ - 2
+ - 1
+Voltage Harmonic 32 L3 :
+ - 711
+ - 2
+ - 1
+Voltage Harmonic 33 L3 :
+ - 713
+ - 2
+ - 1
+Voltage Harmonic 34 L3 :
+ - 715
+ - 2
+ - 1
+Voltage Harmonic 35 L3 :
+ - 717
+ - 2
+ - 1
+Voltage Harmonic 36 L3 :
+ - 719
+ - 2
+ - 1
+Voltage Harmonic 37 L3 :
+ - 721
+ - 2
+ - 1
+Voltage Harmonic 38 L3 :
+ - 723
+ - 2
+ - 1
+Voltage Harmonic 39 L3 :
+ - 725
+ - 2
+ - 1
+Voltage Harmonic 40 L3 :
+ - 727
+ - 2
+ - 1
+Voltage Harmonic 41 L3 :
+ - 729
+ - 2
+ - 1
+Voltage Harmonic 42 L3 :
+ - 731
+ - 2
+ - 1
+Voltage Harmonic 43 L3 :
+ - 733
+ - 2
+ - 1
+Voltage Harmonic 44 L3 :
+ - 735
+ - 2
+ - 1
+Voltage Harmonic 45 L3 :
+ - 737
+ - 2
+ - 1
+Voltage Harmonic 46 L3 :
+ - 739
+ - 2
+ - 1
+Voltage Harmonic 47 L3 :
+ - 741
+ - 2
+ - 1
+Voltage Harmonic 48 L3 :
+ - 743
+ - 2
+ - 1
+Voltage Harmonic 49 L3 :
+ - 745
+ - 2
+ - 1
+Voltage Harmonic 50 L3 :
+ - 747
+ - 2
+ - 1
+Voltage Harmonic 51 L3 :
+ - 749
+ - 2
+ - 1
+Voltage Harmonic 52 L3 :
+ - 751
+ - 2
+ - 1
+Voltage Harmonic 53 L3 :
+ - 753
+ - 2
+ - 1
+Voltage Harmonic 54 L3 :
+ - 755
+ - 2
+ - 1
+Voltage Harmonic 55 L3 :
+ - 757
+ - 2
+ - 1
+Voltage Harmonic 56 L3 :
+ - 759
+ - 2
+ - 1
+Voltage Harmonic 57 L3 :
+ - 761
+ - 2
+ - 1
+Voltage Harmonic 58 L3 :
+ - 763
+ - 2
+ - 1
+Voltage Harmonic 59 L3 :
+ - 765
+ - 2
+ - 1
+Voltage Harmonic 60 L3 :
+ - 767
+ - 2
+ - 1
+Voltage Harmonic 61 L3 :
+ - 769
+ - 2
+ - 1
+Voltage Harmonic 62 L3 :
+ - 771
+ - 2
+ - 1
+Voltage Harmonic 63 L3 :
+ - 773
+ - 2
+ - 1
+Current Harmonic 2 L1 :
+ - 775
+ - 2
+ - 1
+Current Harmonic 3 L1 :
+ - 777
+ - 2
+ - 1
+Current Harmonic 4 L1 :
+ - 779
+ - 2
+ - 1
+Current Harmonic 5 L1 :
+ - 781
+ - 2
+ - 1
+Current Harmonic 6 L1 :
+ - 783
+ - 2
+ - 1
+Current Harmonic 7 L1 :
+ - 785
+ - 2
+ - 1
+Current Harmonic 8 L1 :
+ - 787
+ - 2
+ - 1
+Current Harmonic 9 L1 :
+ - 789
+ - 2
+ - 1
+Current Harmonic 10 L1 :
+ - 791
+ - 2
+ - 1
+Current Harmonic 11 L1 :
+ - 793
+ - 2
+ - 1
+Current Harmonic 12 L1 :
+ - 795
+ - 2
+ - 1
+Current Harmonic 13 L1 :
+ - 797
+ - 2
+ - 1
+Current Harmonic 14 L1 :
+ - 799
+ - 2
+ - 1
+Current Harmonic 15 L1 :
+ - 801
+ - 2
+ - 1
+Current Harmonic 16 L1 :
+ - 803
+ - 2
+ - 1
+Current Harmonic 17 L1 :
+ - 805
+ - 2
+ - 1
+Current Harmonic 18 L1 :
+ - 807
+ - 2
+ - 1
+Current Harmonic 19 L1 :
+ - 809
+ - 2
+ - 1
+Current Harmonic 20 L1 :
+ - 811
+ - 2
+ - 1
+Current Harmonic 21 L1 :
+ - 813
+ - 2
+ - 1
+Current Harmonic 22 L1 :
+ - 815
+ - 2
+ - 1
+Current Harmonic 23 L1 :
+ - 817
+ - 2
+ - 1
+Current Harmonic 24 L1 :
+ - 819
+ - 2
+ - 1
+Current Harmonic 25 L1 :
+ - 821
+ - 2
+ - 1
+Current Harmonic 26 L1 :
+ - 823
+ - 2
+ - 1
+Current Harmonic 27 L1 :
+ - 825
+ - 2
+ - 1
+Current Harmonic 28 L1 :
+ - 827
+ - 2
+ - 1
+Current Harmonic 29 L1 :
+ - 829
+ - 2
+ - 1
+Current Harmonic 30 L1 :
+ - 831
+ - 2
+ - 1
+Current Harmonic 31 L1 :
+ - 833
+ - 2
+ - 1
+Current Harmonic 32 L1 :
+ - 835
+ - 2
+ - 1
+Current Harmonic 33 L1 :
+ - 837
+ - 2
+ - 1
+Current Harmonic 34 L1 :
+ - 839
+ - 2
+ - 1
+Current Harmonic 35 L1 :
+ - 841
+ - 2
+ - 1
+Current Harmonic 36 L1 :
+ - 843
+ - 2
+ - 1
+Current Harmonic 37 L1 :
+ - 845
+ - 2
+ - 1
+Current Harmonic 38 L1 :
+ - 847
+ - 2
+ - 1
+Current Harmonic 39 L1 :
+ - 849
+ - 2
+ - 1
+Current Harmonic 40 L1 :
+ - 851
+ - 2
+ - 1
+Current Harmonic 41 L1 :
+ - 853
+ - 2
+ - 1
+Current Harmonic 42 L1 :
+ - 855
+ - 2
+ - 1
+Current Harmonic 43 L1 :
+ - 857
+ - 2
+ - 1
+Current Harmonic 44 L1 :
+ - 859
+ - 2
+ - 1
+Current Harmonic 45 L1 :
+ - 861
+ - 2
+ - 1
+Current Harmonic 46 L1 :
+ - 863
+ - 2
+ - 1
+Current Harmonic 47 L1 :
+ - 865
+ - 2
+ - 1
+Current Harmonic 48 L1 :
+ - 867
+ - 2
+ - 1
+Current Harmonic 49 L1 :
+ - 869
+ - 2
+ - 1
+Current Harmonic 50 L1 :
+ - 871
+ - 2
+ - 1
+Current Harmonic 51 L1 :
+ - 873
+ - 2
+ - 1
+Current Harmonic 52 L1 :
+ - 875
+ - 2
+ - 1
+Current Harmonic 53 L1 :
+ - 877
+ - 2
+ - 1
+Current Harmonic 54 L1 :
+ - 879
+ - 2
+ - 1
+Current Harmonic 55 L1 :
+ - 881
+ - 2
+ - 1
+Current Harmonic 56 L1 :
+ - 883
+ - 2
+ - 1
+Current Harmonic 57 L1 :
+ - 885
+ - 2
+ - 1
+Current Harmonic 58 L1 :
+ - 887
+ - 2
+ - 1
+Current Harmonic 59 L1 :
+ - 889
+ - 2
+ - 1
+Current Harmonic 60 L1 :
+ - 891
+ - 2
+ - 1
+Current Harmonic 61 L1 :
+ - 893
+ - 2
+ - 1
+Current Harmonic 62 L1 :
+ - 895
+ - 2
+ - 1
+Current Harmonic 63 L1 :
+ - 897
+ - 2
+ - 1 
+Current Harmonic 2 L2 :
+ - 899
+ - 2
+ - 1
+Current Harmonic 3 L2 :
+ - 901
+ - 2
+ - 1
+Current Harmonic 4 L2 :
+ - 903
+ - 2
+ - 1
+Current Harmonic 5 L2 :
+ - 905
+ - 2
+ - 1
+Current Harmonic 6 L2 :
+ - 907
+ - 2
+ - 1
+Current Harmonic 7 L2 :
+ - 909
+ - 2
+ - 1
+Current Harmonic 8 L2 :
+ - 911
+ - 2
+ - 1
+Current Harmonic 9 L2 :
+ - 913
+ - 2
+ - 1
+Current Harmonic 10 L2 :
+ - 915
+ - 2
+ - 1
+Current Harmonic 11 L2 :
+ - 917
+ - 2
+ - 1
+Current Harmonic 12 L2 :
+ - 919
+ - 2
+ - 1
+Current Harmonic 13 L2 :
+ - 921
+ - 2
+ - 1
+Current Harmonic 14 L2 :
+ - 923
+ - 2
+ - 1
+Current Harmonic 15 L2 :
+ - 925
+ - 2
+ - 1
+Current Harmonic 16 L2 :
+ - 927
+ - 2
+ - 1
+Current Harmonic 17 L2 :
+ - 929
+ - 2
+ - 1
+Current Harmonic 18 L2 :
+ - 931
+ - 2
+ - 1
+Current Harmonic 19 L2 :
+ - 933
+ - 2
+ - 1
+Current Harmonic 20 L2 :
+ - 935
+ - 2
+ - 1
+Current Harmonic 21 L2 :
+ - 937
+ - 2
+ - 1
+Current Harmonic 22 L2 :
+ - 939
+ - 2
+ - 1
+Current Harmonic 23 L2 :
+ - 941
+ - 2
+ - 1
+Current Harmonic 24 L2 :
+ - 943
+ - 2
+ - 1
+Current Harmonic 25 L2 :
+ - 945
+ - 2
+ - 1
+Current Harmonic 26 L2 :
+ - 947
+ - 2
+ - 1
+Current Harmonic 27 L2 :
+ - 949
+ - 2
+ - 1
+Current Harmonic 28 L2 :
+ - 951
+ - 2
+ - 1
+Current Harmonic 29 L2 :
+ - 953
+ - 2
+ - 1
+Current Harmonic 30 L2 :
+ - 955
+ - 2
+ - 1
+Current Harmonic 31 L2 :
+ - 957
+ - 2
+ - 1
+Current Harmonic 32 L2 :
+ - 959
+ - 2
+ - 1
+Current Harmonic 33 L2 :
+ - 961
+ - 2
+ - 1
+Current Harmonic 34 L2 :
+ - 963
+ - 2
+ - 1
+Current Harmonic 35 L2 :
+ - 965
+ - 2
+ - 1
+Current Harmonic 36 L2 :
+ - 967
+ - 2
+ - 1
+Current Harmonic 37 L2 :
+ - 969
+ - 2
+ - 1
+Current Harmonic 38 L2 :
+ - 971
+ - 2
+ - 1
+Current Harmonic 39 L2 :
+ - 973
+ - 2
+ - 1
+Current Harmonic 40 L2 :
+ - 975
+ - 2
+ - 1
+Current Harmonic 41 L2 :
+ - 977
+ - 2
+ - 1
+Current Harmonic 42 L2 :
+ - 979
+ - 2
+ - 1
+Current Harmonic 43 L2 :
+ - 981
+ - 2
+ - 1
+Current Harmonic 44 L2 :
+ - 983
+ - 2
+ - 1
+Current Harmonic 45 L2 :
+ - 985
+ - 2
+ - 1
+Current Harmonic 46 L2 :
+ - 987
+ - 2
+ - 1
+Current Harmonic 47 L2 :
+ - 989
+ - 2
+ - 1
+Current Harmonic 48 L2 :
+ - 991
+ - 2
+ - 1
+Current Harmonic 49 L2 :
+ - 993
+ - 2
+ - 1
+Current Harmonic 50 L2 :
+ - 995
+ - 2
+ - 1
+Current Harmonic 51 L2 :
+ - 997
+ - 2
+ - 1
+Current Harmonic 52 L2 :
+ - 999
+ - 2
+ - 1
+Current Harmonic 53 L2 :
+ - 1001
+ - 2
+ - 1
+Current Harmonic 54 L2 :
+ - 1003
+ - 2
+ - 1
+Current Harmonic 55 L2 :
+ - 1005
+ - 2
+ - 1
+Current Harmonic 56 L2 :
+ - 1007
+ - 2
+ - 1
+Current Harmonic 57 L2 :
+ - 1009
+ - 2
+ - 1
+Current Harmonic 58 L2 :
+ - 1011
+ - 2
+ - 1
+Current Harmonic 59 L2 :
+ - 1013
+ - 2
+ - 1
+Current Harmonic 60 L2 :
+ - 1015
+ - 2
+ - 1
+Current Harmonic 61 L2 :
+ - 1017
+ - 2
+ - 1
+Current Harmonic 62 L2 :
+ - 1019
+ - 2
+ - 1
+Current Harmonic 63 L2 :
+ - 1021
+ - 2
+ - 1 
+Current Harmonic 2 L3 :
+ - 1023
+ - 2
+ - 1
+Current Harmonic 3 L3 :
+ - 1025
+ - 2
+ - 1
+Current Harmonic 4 L3 :
+ - 1027
+ - 2
+ - 1
+Current Harmonic 5 L3 :
+ - 1029
+ - 2
+ - 1
+Current Harmonic 6 L3 :
+ - 1031
+ - 2
+ - 1
+Current Harmonic 7 L3 :
+ - 1033
+ - 2
+ - 1
+Current Harmonic 8 L3 :
+ - 1035
+ - 2
+ - 1
+Current Harmonic 9 L3 :
+ - 1037
+ - 2
+ - 1
+Current Harmonic 10 L3 :
+ - 1039
+ - 2
+ - 1
+Current Harmonic 11 L3 :
+ - 1041
+ - 2
+ - 1
+Current Harmonic 12 L3 :
+ - 1043
+ - 2
+ - 1
+Current Harmonic 13 L3 :
+ - 1045
+ - 2
+ - 1
+Current Harmonic 14 L3 :
+ - 1047
+ - 2
+ - 1
+Current Harmonic 15 L3 :
+ - 1049
+ - 2
+ - 1
+Current Harmonic 16 L3 :
+ - 1051
+ - 2
+ - 1
+Current Harmonic 17 L3 :
+ - 1053
+ - 2
+ - 1
+Current Harmonic 18 L3 :
+ - 1055
+ - 2
+ - 1
+Current Harmonic 19 L3 :
+ - 1057
+ - 2
+ - 1
+Current Harmonic 20 L3 :
+ - 1059
+ - 2
+ - 1
+Current Harmonic 21 L3 :
+ - 1061
+ - 2
+ - 1
+Current Harmonic 22 L3 :
+ - 1063
+ - 2
+ - 1
+Current Harmonic 23 L3 :
+ - 1065
+ - 2
+ - 1
+Current Harmonic 24 L3 :
+ - 1067
+ - 2
+ - 1
+Current Harmonic 25 L3 :
+ - 1069
+ - 2
+ - 1
+Current Harmonic 26 L3 :
+ - 1071
+ - 2
+ - 1
+Current Harmonic 27 L3 :
+ - 1073
+ - 2
+ - 1
+Current Harmonic 28 L3 :
+ - 1075
+ - 2
+ - 1
+Current Harmonic 29 L3 :
+ - 1077
+ - 2
+ - 1
+Current Harmonic 30 L3 :
+ - 1079
+ - 2
+ - 1
+Current Harmonic 31 L3 :
+ - 1081
+ - 2
+ - 1
+Current Harmonic 32 L3 :
+ - 1083
+ - 2
+ - 1
+Current Harmonic 33 L3 :
+ - 1085
+ - 2
+ - 1
+Current Harmonic 34 L3 :
+ - 1087
+ - 2
+ - 1
+Current Harmonic 35 L3 :
+ - 1089
+ - 2
+ - 1
+Current Harmonic 36 L3 :
+ - 1091
+ - 2
+ - 1
+Current Harmonic 37 L3 :
+ - 1093
+ - 2
+ - 1
+Current Harmonic 38 L3 :
+ - 1095
+ - 2
+ - 1
+Current Harmonic 39 L3 :
+ - 1097
+ - 2
+ - 1
+Current Harmonic 40 L3 :
+ - 1099
+ - 2
+ - 1
+Current Harmonic 41 L3 :
+ - 1101
+ - 2
+ - 1
+Current Harmonic 42 L3 :
+ - 1103
+ - 2
+ - 1
+Current Harmonic 43 L3 :
+ - 1105
+ - 2
+ - 1
+Current Harmonic 44 L3 :
+ - 1107
+ - 2
+ - 1
+Current Harmonic 45 L3 :
+ - 1109
+ - 2
+ - 1
+Current Harmonic 46 L3 :
+ - 1111
+ - 2
+ - 1
+Current Harmonic 47 L3 :
+ - 1113
+ - 2
+ - 1
+Current Harmonic 48 L3 :
+ - 1115
+ - 2
+ - 1
+Current Harmonic 49 L3 :
+ - 1117
+ - 2
+ - 1
+Current Harmonic 50 L3 :
+ - 1119
+ - 2
+ - 1
+Current Harmonic 51 L3 :
+ - 1121
+ - 2
+ - 1
+Current Harmonic 52 L3 :
+ - 1123
+ - 2
+ - 1
+Current Harmonic 53 L3 :
+ - 1125
+ - 2
+ - 1
+Current Harmonic 54 L3 :
+ - 1127
+ - 2
+ - 1
+Current Harmonic 55 L3 :
+ - 1129
+ - 2
+ - 1
+Current Harmonic 56 L3 :
+ - 1131
+ - 2
+ - 1
+Current Harmonic 57 L3 :
+ - 1133
+ - 2
+ - 1
+Current Harmonic 58 L3 :
+ - 1135
+ - 2
+ - 1
+Current Harmonic 59 L3 :
+ - 1137
+ - 2
+ - 1
+Current Harmonic 60 L3 :
+ - 1139
+ - 2
+ - 1
+Current Harmonic 61 L3 :
+ - 1141
+ - 2
+ - 1
+Current Harmonic 62 L3 :
+ - 1143
+ - 2
+ - 1
+Current Harmonic 63 L3 :
+ - 1145
+ - 2
+ - 1 

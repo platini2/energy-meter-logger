@@ -10,11 +10,11 @@ Active power Phase : # 1LSB -> 0.1W
  - 3
  - 2
  - 4
-Import active energy : # 1LSB -> 1Wh
+Import active energy PZEM: # 1LSB -> 1Wh
  - 5
  - 2
  - 4
-Frequency : # 1LSB -> 0.1Hz
+Frequency PZEM: # 1LSB -> 0.1Hz
  - 7
  - 1
  - 3

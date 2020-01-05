@@ -100,7 +100,7 @@ class DataCollector:
 
                     for parameter in parameters:
                         # If random readout errors occour, e.g. CRC check fail, test to uncomment the following row
-                        #time.sleep(0.01) # Sleep for 10 ms between each parameter read to avoid errors
+                        time.sleep(0.5) # Sleep for 500 ms between each parameter read to avoid errors
                         retries = 3
                         while retries > 0:
                             try:
@@ -173,7 +173,7 @@ class DataCollector:
 
                     for parameter in parameters:
                         # If random readout errors occour, e.g. CRC check fail, test to uncomment the following row
-                        #time.sleep(0.01) # Sleep for 10 ms between each parameter read to avoid errors
+                        time.sleep(0.5) # Sleep for 500 ms between each parameter read to avoid errors
                         retries = 3
                         while retries > 0:
                             try:

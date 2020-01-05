@@ -38,6 +38,6 @@ sudo pip3 install setuptools
 sudo python3 setup.py install
 echo "Make script file executable"
 chmod 777 read_energy_meter.py
-echo "\e[1;31mEND Pre-Instalacion\e[0m"
-echo "\e[1;31mEdit meters.yml and influx_config.yml to match your configuration and create database in Influx\e[0m"
-echo "\e[1;31mContinue step-by-step since [Test the configuration by running:] in https://github.com/GuillermoElectrico/energy-meter-logger#install-energy-meter-logger\e[0m"
+echo -e "\e[1;31m END Pre-Instalacion \e[0m"
+echo -e "\e[1;31m Edit meters.yml and influx_config.yml to match your configuration and create database in Influx \e[0m"
+echo -e "\e[1;31m Continue step-by-step since [Test the configuration by running:] in https://github.com/GuillermoElectrico/energy-meter-logger#install-energy-meter-logger \e[0m"

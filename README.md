@@ -47,10 +47,10 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
     ```sh
     $ sudo service influxdb start
     ```
-* Create the database
+* Create the database with data retention of 6 months (if you want more increase the value of weeks or delete it).
     ```sh
     $ influx
-    CREATE DATABASE db_meters
+    CREATE DATABASE db_meters WITH DURATION 24w
     exit
     ```
 [*source](https://docs.influxdata.com/influxdb/v1.7/introduction/installation/)

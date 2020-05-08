@@ -1,0 +1,100 @@
+Voltage Phase 1 :
+ - 1 # Adress data
+ - 2 # Length word
+ - 1 # Data Type. 1=Float(ABCD), 2=Long(ABCD), 3=Integer, 4=Long(CDAB), 5=Word (Unsigned Int), 6=Dword (Unsigned Long)
+Voltage Phase 2 :
+ - 3
+ - 2
+ - 1
+Voltage Phase 3 :
+ - 5
+ - 2
+ - 1
+Voltage Phase 1-2 :
+ - 7
+ - 2
+ - 1
+Voltage Phase 2-3 :
+ - 9
+ - 2
+ - 1
+Voltage Phase 3-1 :
+ - 11
+ - 2
+ - 1
+Current Phase 1 :
+ - 13
+ - 2
+ - 1
+Current Phase 2 :
+ - 15
+ - 2
+ - 1
+Current Phase 3 :
+ - 17
+ - 2
+ - 1
+Active power Phase 1 :
+ - 25
+ - 2
+ - 1
+Active power Phase 2 :
+ - 27
+ - 2
+ - 1
+Active power Phase 3 :
+ - 29
+ - 2
+ - 1
+Total Active power :
+ - 49
+ - 2
+ - 1
+Reactive power Phase 1 :
+ - 31
+ - 2
+ - 1
+Reactive power Phase 2 :
+ - 33
+ - 2
+ - 1
+Reactive power Phase 3 :
+ - 35
+ - 2
+ - 1
+Total Reactive power :
+ - 51
+ - 2
+ - 1
+Apparent power Phase 1 :
+ - 19
+ - 2
+ - 1
+Apparent power Phase 2 :
+ - 21
+ - 2
+ - 1
+Apparent power Phase 3 :
+ - 23
+ - 2
+ - 1
+Total Apparent power :
+ - 47
+ - 2
+ - 1
+Total Power factor :
+ - 53
+ - 2
+ - 1
+Frequency :
+ - 39
+ - 2
+ - 1
+Active energy :
+ - 801
+ - 4
+ - 1
+Reactive energy :
+ - 805
+ - 4
+ - 1

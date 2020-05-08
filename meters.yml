@@ -87,3 +87,13 @@ meters:
       stopbits : 1
       timeout  : 0.5   # seconds
       function : 4    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 
+    - name : Meter Group 9
+      type : PAC3100.yml
+      conexion: R  # R = RTU 232/485 | T = TCP IPv4
+      id : 126     # this is the slave address number
+      baudrate : 19200   # Baud
+      bytesize : 8
+      parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
+      stopbits : 2
+      timeout  : 0.5   # seconds
+      function : 4    # 3 = Read Holding register (40000) or 4 = Read Input register (30000) 

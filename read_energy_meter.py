@@ -142,23 +142,23 @@ class DataCollector:
                                 log.warning('Value Error while reading register {} from meter {}. Retries left {}.'
                                        .format(parameters[parameter], meter['id'], retries))
                                 log.error(ve)
-                                if retries == 0:
-                                    raise RuntimeError
+#                                if retries == 0:
+#                                    raise RuntimeError
                             except TypeError as te:
                                 log.warning('Type Error while reading register {} from meter {}. Retries left {}.'
                                        .format(parameters[parameter], meter['id'], retries))
                                 log.error(te)
-                                if retries == 0:
-                                    raise RuntimeError
+#                                if retries == 0:
+#                                    raise RuntimeError
                             except IOError as ie:
                                 log.warning('IO Error while reading register {} from meter {}. Retries left {}.'
                                        .format(parameters[parameter], meter['id'], retries))
                                 log.error(ie)
-                                if retries == 0:
-                                    raise RuntimeError
+#                                if retries == 0:
+#                                    raise RuntimeError
                             except:
                                 log.error("Unexpected error:", sys.exc_info()[0])
-                                raise
+#                                raise
 
                     datas[list]['ReadTime'] =  time.time() - start_time
                 elif meter['conexion'] == 'T':
@@ -215,23 +215,23 @@ class DataCollector:
                                 log.warning('Value Error while reading register {} from meter {}. Retries left {}.'
                                        .format(parameters[parameter], meter['id'], retries))
                                 log.error(ve)
-                                if retries == 0:
-                                    raise RuntimeError
+#                                if retries == 0:
+#                                    raise RuntimeError
                             except TypeError as te:
                                 log.warning('Type Error while reading register {} from meter {}. Retries left {}.'
                                        .format(parameters[parameter], meter['id'], retries))
                                 log.error(te)
-                                if retries == 0:
-                                    raise RuntimeError
+#                                if retries == 0:
+#                                    raise RuntimeError
                             except IOError as ie:
                                 log.warning('IO Error while reading register {} from meter {}. Retries left {}.'
                                        .format(parameters[parameter], meter['id'], retries))
                                 log.error(ie)
-                                if retries == 0:
-                                    raise RuntimeError
+#                                if retries == 0:
+#                                    raise RuntimeError
                             except:
                                 log.error("Unexpected error:", sys.exc_info()[0])
-                                raise
+#                                raise
 
                     datas[list]['ReadTime'] =  time.time() - start_time
 

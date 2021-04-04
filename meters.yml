@@ -61,7 +61,7 @@ meters:
       type : SDM220.yml
       conexion: R  # R = RTU 232/485 | T = TCP IPv4
       id : 1     # this is the slave address number
-      baudrate : 2400   # Baud
+      baudrate : 9600   # Baud
       bytesize : 8
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1
@@ -71,7 +71,7 @@ meters:
       type : SDM230.yml
       conexion: R  # R = RTU 232/485 | T = TCP IPv4
       id : 1     # this is the slave address number
-      baudrate : 2400   # Baud
+      baudrate : 9600   # Baud
       bytesize : 8
       parity : 'N' # 'N' = none | 'E' = even | 'O' = odd | 'S' = space| 'M' = mark
       stopbits : 1

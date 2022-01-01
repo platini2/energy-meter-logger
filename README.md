@@ -37,7 +37,7 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 	$ sudo apt-get update && sudo apt-get install curl apt-transport-https -y
     $ curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
     $ source /etc/os-release
-    $ test $VERSION_ID = "10" && echo "deb https://repos.influxdata.com/debian buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+    $ test $VERSION_ID = "11" && echo "deb https://repos.influxdata.com/debian buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
     ```
 * Download and install
     ```sh

@@ -43,6 +43,8 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
     ```sh
     $ sudo apt-get update && sudo apt-get install influxdb
     ```
+	If error read https://www.influxdata.com/blog/linux-package-signing-key-rotation/
+	
 * Start the influxdb service
     ```sh
     $ sudo service influxdb start

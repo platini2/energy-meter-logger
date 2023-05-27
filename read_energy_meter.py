@@ -14,7 +14,7 @@ import modbus_tk.defines as cst
 from modbus_tk import modbus_rtu
 from modbus_tk import modbus_tcp
 
-#PORT = 1
+#PORT = 'COM3'
 PORT = '/dev/ttyUSB0'
 #PORT = '/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0'
 

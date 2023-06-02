@@ -14,8 +14,8 @@ import modbus_tk.defines as cst
 from modbus_tk import modbus_rtu
 from modbus_tk import modbus_tcp
 
-#PORT = 'COM3'
-PORT = '/dev/ttyUSB0'
+PORT = 'COM3'
+#PORT = '/dev/ttyUSB0'
 #PORT = '/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0'
 
 # Change working dir to the same dir as this script
@@ -100,7 +100,7 @@ class DataCollector:
 
                     for parameter in parameters:
                         # If random readout errors occour, e.g. CRC check fail, test to uncomment the following row
-                        time.sleep(0.5) # Sleep for 500 ms between each parameter read to avoid errors
+                        time.sleep(0.15) # Sleep for 150 ms between each parameter read to avoid errors
                         retries = 3
                         while retries > 0:
                             try:
@@ -161,6 +161,7 @@ class DataCollector:
 #                                raise
 
                     datas[list]['ReadTime'] =  time.time() - start_time
+                    del masterRTU;
                 elif meter['conexion'] == 'T':
                     masterTCP = modbus_tcp.TcpMaster(host=meter['direction'],port=meter['port'])
 
@@ -173,7 +174,7 @@ class DataCollector:
 
                     for parameter in parameters:
                         # If random readout errors occour, e.g. CRC check fail, test to uncomment the following row
-                        time.sleep(0.5) # Sleep for 500 ms between each parameter read to avoid errors
+                        time.sleep(0.15) # Sleep for 150 ms between each parameter read to avoid errors
                         retries = 3
                         while retries > 0:
                             try:
@@ -234,17 +235,17 @@ class DataCollector:
 #                                raise
 
                     datas[list]['ReadTime'] =  time.time() - start_time
-
+                    del masterTCP;
             except modbus_tk.modbus.ModbusError as exc:
                 log.error("%s- Code=%d", exc, exc.get_exception_code())
 
 
         json_body = [
             {
-                'measurement': 'EnergyMeters',
+                'measurement': meter_id_name[meter_id],
                 'tags': {
                     'id': meter_slave_id[meter_id],
-                    'meter': meter_id_name[meter_id],
+#                    'meter': meter_id_name[meter_id],
                 },
                 'time': t_str,
                 'fields': datas[meter_id]

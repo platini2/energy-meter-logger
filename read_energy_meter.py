@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from influxdb import InfluxDBClient
+from influxdb_client import InfluxDBClient
+from influxdb_client.client.write_api import SYNCHRONOUS
 from datetime import datetime, timedelta
 from os import path
 import sys
@@ -29,7 +30,7 @@ class DataCollector:
         self.influx_inteval_save = dict()
         log.info('InfluxDB:')
         for influx_config in sorted(self.get_influxdb(), key=lambda x:sorted(x.keys())):
-            log.info('\t {} <--> {} , Interval: {}'.format(influx_config['host'], influx_config['name'], influx_config['interval']))
+            log.info('\t {} <--> {} , Interval: {}'.format(influx_config['url'], influx_config['name'], influx_config['interval']))
         self.meter_yaml = meter_yaml
         self.max_iterations = None  # run indefinitely by default
         self.meter_map = None
@@ -265,13 +266,10 @@ class DataCollector:
                     if self.influx_inteval_save[list] <= 1:
                         self.influx_inteval_save[list] = influx_config['interval']
 
-                        DBclient = InfluxDBClient(influx_config['host'],
-                                                influx_config['port'],
-                                                influx_config['user'],
-                                                influx_config['password'],
-                                                influx_config['dbname'])
+                        DBclient = InfluxDBClient(url=influx_config['url'], token=influx_config['token'], org=influx_config['org'])
+                        write_api = DBclient.write_api(write_options=SYNCHRONOUS)
                         try:
-                            DBclient.write_points(json_body)
+                            write_api.write(bucket=influx_config['dbname'],org=influx_config['org'],record=json_body)
                             log.info(t_str + ' Data written for %d meters in {}.' .format(influx_config['name']) % len(json_body) )
                         except Exception as e:
                             log.error('Data not written! in {}' .format(influx_config['name']))

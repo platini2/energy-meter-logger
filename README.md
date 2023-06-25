@@ -1,5 +1,6 @@
 Update an modify scripts to run in python3 from original proyect https://github.com/samuelphy/energy-meter-logger, change to modbus_tk module and add new industrial devices metters.
-Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266. Added possibility to use more than one InfluxDB server (or database)
+Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266. Added possibility to use more than one InfluxDB server (or database).
+Thanks to unverbuggt, for the update to influx 2.7
 
 # Energy Meter Logger
 Log your Energy Meter data on a Raspberry Pi/Orange Pi and plot graphs of your energy consumption.
@@ -21,7 +22,7 @@ Add support for ModbusTCP and add bridge TCP to RTU vía ESP8266 and MAX485.
 * Python 3.4 and PIP3
 * PyYAML 5.1 ((pip3 install -U PyYAML or python3 -m pip install -U PyYAML) if installed)
 * [modbus_tk](https://github.com/ljean/modbus-tk)
-* [InfluxDB](https://docs.influxdata.com/influxdb/v1.3/)
+* [InfluxDB](https://docs.influxdata.com/influxdb/v2.7/)
 * [Grafana](http://docs.grafana.org/)
 
 ### Prerequisite
@@ -34,28 +35,30 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 ##### Step-by-step instructions
 * Add the InfluxData repository
     ```sh
-	$ sudo apt-get update && sudo apt-get install curl apt-transport-https -y
-    $ curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-    $ source /etc/os-release
-    $ test $VERSION_ID = "11" && echo "deb https://repos.influxdata.com/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+    $ wget -q https://repos.influxdata.com/influxdata-archive_compat.key
+    $ echo '393e8779c89ac8d958f81f942f9ad7fb82a25e133faddaf92e15b16e6ac9ce4c influxdata-archive_compat.key' | sha256sum -c && cat influxdata-archive_compat.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg > /dev/null
+    $ echo 'deb [signed-by=/etc/apt/trusted.gpg.d/influxdata-archive_compat.gpg] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
     ```
 * Download and install
     ```sh
-    $ sudo apt-get update && sudo apt-get install influxdb
+    $ sudo apt-get update && sudo apt-get install influxdb2
     ```
-	If error read https://www.influxdata.com/blog/linux-package-signing-key-rotation/
-	
 * Start the influxdb service
     ```sh
-    $ sudo service influxdb start
+    $ sudo systemctl start influxdb
     ```
-* Create the database with data retention of 6 months (if you want more increase the value of weeks or delete it).
+* Create the database (databases are named buckets in influxdb2)
     ```sh
-    $ influx
-    CREATE DATABASE db_meters WITH DURATION 24w
-    exit
+    $  influx bucket create -n db_modbus --org myorg
     ```
-[*source](https://docs.influxdata.com/influxdb/v1.7/introduction/installation/)
+    or user webui at `http://localhost:8086`
+* Create a token
+    ```sh
+    $ influx auth create -o myorg --all-access
+    ```
+    or user webui at `http://localhost:8086`
+
+[*manual installation without apt](https://docs.influxdata.com/influxdb/v2.7/install/)
 
 #### Install Grafana*
 

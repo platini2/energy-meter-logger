@@ -266,9 +266,10 @@ class DataCollector:
                     if self.influx_inteval_save[list] <= 1:
                         self.influx_inteval_save[list] = influx_config['interval']
 
-                        DBclient = InfluxDBClient(url=influx_config['url'], token=influx_config['token'], org=influx_config['org'])
-                        write_api = DBclient.write_api(write_options=SYNCHRONOUS)
                         try:
+                            DBclient = InfluxDBClient(url=influx_config['url'], token=influx_config['token'], org=influx_config['org'])
+                            write_api = DBclient.write_api(write_options=SYNCHRONOUS)
+                        
                             write_api.write(bucket=influx_config['dbname'],org=influx_config['org'],record=json_body)
                             log.info(t_str + ' Data written for %d meters in {}.' .format(influx_config['name']) % len(json_body) )
                         except Exception as e:

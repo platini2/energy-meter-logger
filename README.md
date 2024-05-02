@@ -65,11 +65,9 @@ This project has been documented at [Hackster](https://www.hackster.io/samuelphy
 ##### Step-by-step instructions
 * Add APT Repository
     ```sh
-    $ echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
-    ```
-* Add Bintray key
-    ```sh
-    $ curl https://packages.grafana.com/gpg.key | sudo apt-key add -
+    $ mkdir -p /etc/apt/keyrings/
+	$ wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor > /etc/apt/keyrings/grafana.gpg
+	$ echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | tee /etc/apt/sources.list.d/grafana.list
     ```
 * Now install
     ```sh
